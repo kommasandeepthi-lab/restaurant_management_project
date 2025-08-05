@@ -1,7 +1,6 @@
-from django.urls import path, include
-from django.contrib import admin
+from django.urls import path
+from .views import MenuAPIView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('your_app.urls')),
+    path('api/menu/', MenuAPIView.as_view(), name='menu-api'),
 ]
