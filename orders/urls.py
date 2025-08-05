@@ -1,6 +1,9 @@
-from django.urls import path
-from .views import MenuAPIViews
+from django.contrib import admin
+from django.urls import path, include
+
+from .views import MenuAPIView
 
 urlpatterns = [
-    path('api/menu/', MenuAPIViews.as_view(), name='menu-api'),
-    ]
+    path('admin/', admin.site.urls),
+    path('api/menu/', MenuAPIView.as_view(), name='menu-api'),
+]
