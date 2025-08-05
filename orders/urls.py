@@ -5,5 +5,5 @@ from .views import MenuAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/menu/', MenuAPIView.as_view(), name='menu-api'),
+    path('api/menu/', include('orders.urls')),
 ]
