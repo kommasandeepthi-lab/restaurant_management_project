@@ -1,5 +1,6 @@
-from django.urls import path, include
+from django.urls import path
+from .views import reservations_view
 
 urlpatterns = [
-    path('', include('your_app_name.urls'))
+    path('reservations/', reservations_view, name='reservations'),
 ]
