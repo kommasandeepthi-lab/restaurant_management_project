@@ -2,9 +2,14 @@
 <html>
 <head>
     <title>{{ restaurant_name }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body style="font-family: Arial, sans-serif; background-color: #f9f9f9; color: #999; color: #333; margin: 0;"
 <!-- Header with restaurant name and navigation -->
+<div class="container">
+    <h1>Welcome to {{ restaurant_name }}</h1>
+</div>
 <header style="background-color: #20232a; color: white; text-align: center; padding: 30px 20px;">
     <h1 style="margin: 0;">Welcome to {{ restaurant_name }}</h1>
 
