@@ -5,7 +5,7 @@ from django.conf import settings
 
 def home_view(request):
     context = {
-        'restaurant_name': 'My Restaurant',
+        'restaurant_name': 'The Tasty Table',
         'phone_number': settings.RESTAURANT_PHONE
     }
     return render(request, 'home.html', context)
