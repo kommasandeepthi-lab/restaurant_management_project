@@ -1,8 +1,15 @@
 from django.shortcuts import render
 import requests
+from django.conf import settings
 # Create your views here.
 
-def home(request):
+def home_view(request):
+    context = {
+        'restaurant_name': 'My Restaurant',
+        'phone_number': settings.RESTAURANT_PHONE
+    }
+    return render(request, 'home.html', context)
+    
     api_url = 'http://localhost:8000/api/menu/'
     try:
         response = requests.get(api_url)
