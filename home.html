@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Home - Restaurant</title>
     <!--Google Font-->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
@@ -26,8 +26,15 @@
             text-align: center;
         }
         
+        .logo {
+            width: 180px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
         h1 {
            color: #2c3e50;
+           margin-top: 0;
         }
         
         p {
@@ -38,8 +45,11 @@
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to the Home Page</h1>
-        <p>You are logged in. Enjoy your stay!</p>
+        <!--Replace 'logo.png' with your actual logo path-->
+        <img src="{%static 'images/logo.png' %}" alt="Restaurant Logo" class="logo">
+
+        <h1>Welcome to Our Restaurant</h1>
+        <p>You are logged in. Enjoy your meal!</p>
     </div>
 </body>
 </html>
