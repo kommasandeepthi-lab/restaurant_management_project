@@ -1,55 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Home - Restaurant</title>
-    <!--Google Font-->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-
-
+    <title>{{ restaurant_name }}</title>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 80px auto;
-            padding: 30px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        
-        .logo {
-            width: 180px;
-            height: auto;
-            margin-bottom: 20px;
+           font-family: Arial, sans-serif;
+           text-align: center;
+           margin-top: 50px;
         }
 
-        h1 {
-           color: #2c3e50;
-           margin-top: 0;
+        .search-container {
+            margin: 20px auto;
+            width: 300px;
+            display: flex;
         }
-        
-        p {
-            font-size: 18px;
-            line-height: 1.6;
+
+        .search-container button {
+            padding: 8px 15px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!--Replace 'logo.png' with your actual logo path-->
-        <img src="{%static 'images/logo.png' %}" alt="Restaurant Logo" class="logo">
+    <h1>Welcome to {{ restaurant_name }}</h1>
 
-        <h1>Welcome to Our Restaurant</h1>
-        <p>You are logged in. Enjoy your meal!</p>
+    <div class="search-container">
+        <input type="text" placeholder="Search menu items...">
+        <button type="submit">Search</button>
     </div>
 </body>
 </html>
