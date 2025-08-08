@@ -4,5 +4,23 @@
     <title>{% block title %}{{ restaurant_name }}{% endblock %}</title>
     <style>
         footer {
-           background-color:
+           background-color: #333;
+           color: white;
+           text-align: center;
+           padding: 10px;
+           position: fixed;
+           left: 0;
+           bottom: 0;
+           width: 100%;
+           font-size: 14px;
         }
+    </style>
+</head>
+<body>
+    {% block content %}{% endblock %}
+
+    <footer>
+        <p>&copy; {{ restaurant_name }} {{ now|date:"Y" }}. All rights reserved.</p>
+    </footer>
+</body>
+</html>
