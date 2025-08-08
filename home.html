@@ -1,32 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>{{ restaurant_name }}</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        h1 {
+           color: #2c3e50;
+        }
+        
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+    </style>
 </head>
-<body style="font-family: Arial, sans-serif; background-color: #f9f9f9; color: #999; color: #333; margin: 0;"
-<!-- Header with restaurant name and navigation -->
-<div class="container">
-    <h1>Welcome to {{ restaurant_name }}</h1>
-    <p><strong>Call us:</strong> {{ phone_number }}</p>
-    <p>We're glad you're here! Explore our delicious menu and enjoy a great dining experience.</p>
-</div>
-<header style="background-color: #20232a; color: white; text-align: center; padding: 30px 20px;">
-    <h1 style="margin: 0;">Welcome to {{ restaurant_name }}</h1>
-
-    <nav style="margin-top: 15px;">
-        <a href="/" style="color: #61dafb; margin: 0 15px; text-decoration: none;">Home</a>
-        <a href="/about/" style="color: #61dafb; margin: 0 15px; text-decoration: none;">About</a>
-        <a href="#" style="color: #61dafb; margin: 0 15px; text-decoration: none;">Products</a>
-        <a href="#" style="color: #61dafb; margin: 0 15px; text-decoration: none;">Contact</a>
-    </nav>
-</header>
-
-<!-- Main content can go here -->
-<main style="text-align: center; padding: 40px;">
-    <p style="font-size: 1.2em;">Explore our latest offerings and discover your favour</p>
-</main>
-
+<body>
+    <div class="container">
+        <h1>Welcome to the Home Page</h1>
+        <p>You are logged in. Enjoy your stay!</p>
+    </div>
 </body>
 </html>
