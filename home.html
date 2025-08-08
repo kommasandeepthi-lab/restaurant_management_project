@@ -31,6 +31,27 @@
 </head>
 <body>
     <h1>Welcome to {{ restaurant_name }}</h1>
+    
+    <!-- Contact Form -->
+    <h2>Contact Us</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit">Send</button>
+    </form>
+
+    <!-- Google Map Embed -->
+    <div style="margin-top: 10px;">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=YOUR_EMBED_URL"
+          width="600"
+          height="450"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
 
     <div class="search-container">
         <input type="text" placeholder="Search menu items...">
