@@ -1,24 +1,11 @@
-<!-- templates/menu.html -->
-<!Doctype html>
-<html>
-<head>
-    <title>Menu</title>
-</head>
-<body>
-    <h1>Our Menu</h1>
-     
-     {% if items %}
-     <ul>
-        {% for items in items %}
-        <li>
-            <h3>{{ item.name }}</h3>
-            <p>{{ items.description }}</p>
-            <p><Strong>Price:</Strong> {{ item.price }}</p>
-        </li>
-    {% endfor %}
-     </ul>
-     {% else %}
-     <p>No menu items available.</p>
-     {% endif %}
-</body>
-</html>
+<!-- menu.html -->
+{% for items in menu_items %}
+    <div>
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.description }}</p>
+        <p>Price: {{ item.price }}</p>
+        {% if item.image %}
+            <img src="{{ item.image.url }}" alt="{{ item.name }}" width="200">
+        {% endif %}
+    </div>
+{% endfor %}
