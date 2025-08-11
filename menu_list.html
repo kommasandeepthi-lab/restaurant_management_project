@@ -2,6 +2,28 @@
 <html>
 <head>
     <title>Menu</title>
+    <style>
+        .menu_item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .menu_item img {
+            width: 150px;
+            height: auto;
+            margin-right: 20px;
+            border-radius: 8px;
+        }
+        .menu_item-details {
+            max-width: 500px;
+        }
+        .price {
+            font-weight: bold;
+            color: #2b7a0b;
+        }
+    </style>
 </head>
 <body>
     <h1>Our Menu</h1>
@@ -10,5 +32,19 @@
             <li>{{ item.name }} - {{ item.price }}</li>
         {% endfor %}
     </ul>
+
+    {% for item in menu_items %}
+    <div class="menu-item">
+        {% if item.image %}
+           <img src="{{ item.image.url }}" alt="{{ item.name }}">
+        {% endif %}
+        <div class="menu-item-details">
+            <h2>{{ item.name }}</h2>
+            <p>{{ item.description }}</p>
+            <p class="price">{{ item.price }}</p>
+        </div>
+    {% empty %}
+    <p>No menu items available.</p>
+    {% endfor %}
 </body>
 </html>
