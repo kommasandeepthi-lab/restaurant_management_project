@@ -30,3 +30,23 @@ document.getElementById("contactForm").addEventListener("submit", function(event
 });
 </script>
 {%endblock %}
+<body>
+    <h1>Contact Us</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Send</button>
+    </form>
+
+    {% if form.errors %}
+    <div style="color: red;">
+        <ul>
+        {% for field, errors in form.errors.items %}
+           {% for error in errors %}
+           <li><strong>{{ field|title }}:</strong> {{ error }}</li>
+        {% endfor %}
+    {% endfor %}
+        </ul>
+    </div>
+</body>
+{% endif %}
