@@ -7,5 +7,13 @@
 <body>
     <h1>Welcome to {{ restaurant.name }}</h1>
     <p><strong>Address:</strong> {{ restaurant.ddress}}</p>
+    <p>Phone: {{ restaurant.phone_number }}</p>
+
+    <h2>Opening Hours</h2>
+    <ul>
+        {% for day, hours in restaurant.opening_hours.items %}
+           <li><strong>{{ day }};</strong>
+        {% endfor %}
+    </ul>
 </body>
 </html>
