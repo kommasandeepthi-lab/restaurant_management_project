@@ -1,6 +1,13 @@
 from django.shortcuts import render
-from .models import Restaurant
+from .dorms import ConatactForm
 
-def homepage(request):
-    restaurant = Restaurant.objects.first()
-    return render(request, 'homepage.html', {'restaurant': restaurant})
+def contact_view(request):
+    if request.method == "POST:
+        form = ConatactForm(request.POST)
+        if form.is_valid()
+
+           return render(request, 'contact_success.html')
+    else:
+        form = ConatactForm()
+
+    return render(request, 'contact.html', {'form': form})
