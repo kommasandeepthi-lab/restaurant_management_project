@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import MenuItem
+from .models import Restaurant
 
-def menu_list(request):
-    menu_items = MenuItem.objects.all()
-    return render(request, 'menu_list.html', {'menu_items': menu_items})
+def homepage(request):
+    restaurant = Restaurant.objects.first()
+    return render(request, 'homepage.html', {'restaurant': restaurant})
