@@ -7,4 +7,4 @@ class RestaurantLocation(models.Model):
     zip_code = models.CharField(max_length=10)
 
     def __str__(self):
-        return f"{self.address}, {self.sity}, {self.state} {self.zip_code}"
+        return f"{self.address}, {self.city}, {self.state} {self.zip_code}"
