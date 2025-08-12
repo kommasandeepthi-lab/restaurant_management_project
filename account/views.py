@@ -9,3 +9,7 @@ def homepage_view(request):
 
 def about_view(request):
     return render(request, 'about.html')
+
+def homepage(request):
+    restaurant = Restaurant.objects.first()
+    return render(request, 'homepage.html', {'restaurant': restaurant})
