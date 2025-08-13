@@ -1,28 +1,17 @@
-<!-- about.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>About Us</title>
+    <title>About Us - {{ info.name }}</title>
 </head>
-<body style="font-family: Arial, sans-serif; background:#fdfdfd; color:#333; padding:20px;">
-    
-    <header style="text-align: center; padding: 20px;">
-        <h1>About Our Restaurant</h1>
-    </header>
+<body>
+    <h1>About {{ info.name }}</h1>
 
-    <section style="max-width: 800px; margin: auto; text-align: center;">
-        <img src="/static/images/restaurant.jpg" alt="Restaurant Image" style="width:100%;" max-width:500px; border-radius:8px; margin-bottom:20px;">
+    <h2>Our History</h2>
+    <p>{{ info.history }}</p>
 
-        <p style="font-size:1.2em;">
-            Welcome to <strong>Restaurant Delights</strong>, where passion meets flavor.
-            Our chefs use the finest local ingredients to craft unforgettable dining experiences.
-            Whether you're here for a casual bite or a celebration, we're excited to serve you!
-        </p>
-    </section>
+    <h2>Our Mission</h2>
+    <p>{{ info.misiion }}</p>
 
-    <div style="text-align:center; margin-top: 30px;">
-        <a href="/" style="text-decoration:none; color:#007BFF;"> Back to Home</a>
-    </div>
+    <a href="/">Back to Home</a>
 </body>
 </html>
