@@ -6,6 +6,14 @@
 <body>
     <h1>Welcome to {{ restaurant.name }}</h1>
 
+    <p><strong>Phone:</strong> {{ restaurant.phone_number }}</p>
+
+    <h2>Our History</h2>
+    <p>{{ restaurant.history }}</p>
+
+    <h2>Our Mission</h2>
+    <p>{{ restaurant.mission }}</p>
+
     {% if restaurant.logo %}
         <img src="{{ restaurant.logo.url }}" alt="{{ restaurant.name }} Logo" width="200">
     {% else %}
