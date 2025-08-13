@@ -1,36 +1,14 @@
 <!DOCTYPE html>
-<html lang="en"
+<html>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Homepage</title>
+    <title>Shopping Cart Example</title>
 </head>
-<body style="margin:0"; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color=#f9f9f9; color:#333;">
+<body>
+    <h1>Welcome to Our Store</h1>
+    <p> Items in cart: {{ cart_count }}</p>
 
-
-<!-- Header -->
-<header style="background-color:#20232a; color:white; padding:30px 20px; text-align:center;">
-    <h1 style="margin:0; font-size:2.5em;">Welcome to Our Website</h1>
-    <nav style="margin-top:15px;">
-        <a href="#" style="color:#61dafb; margin:0 15px; text-decoration:none; font-weight:500;">Home</a>
-        <a href="#" style="color:#61dafb; margin:0 15px; text-decoration:none; font-weight:500;">Products</a>
-        <a href="#" style="color:#61dafb; margin:0 15px; text-decoration:none; font-weight:500;">About</a>
-        <a href="#" style="color:#61dafb; margin:0 15px; text-decoration:none; font-weight:500;">Contact</a>
-    </nav>
-</header>
-
-<!-- Hero Section -->
-<main>
-    <section style="text-align:center; padding:60px 20px; background-color:white;">
-        <h2 style="font-size:2em; margin-bottom:10px">Your One-Stop Shop for Clothing</h2>
-        <p style="font-size:1.2em; color:#555; margin-bottom:25px;">Discover the latest fashion trends at great prices.</p>
-        <button style="background-color:#61dafb; color:#20232a; border:none; padding:12px 25px; font-size:1em; border-radius:4px; cursor:pointer;">Shop Now</button>
-    </section>
-</main>
-<!-- Footer -->
-<footer style="text-align:center; padding:20px; background-color:#20232a; color:#bbb; font-size:0.9em;">
-    &copy; 2025 E-Commerce Clothing Site. All rights reserved.
-</footer>
-
+    <a href="{{ url_for('add_to_cart', item_id=1) }}">Add Item 1</a><br>
+    <a href="{{ url_for('add_to_cart', item_id=2) }}">Add Item 2</a><br>
+    <a href="{{ url_for('add_to_cart') }}">Clear Cart</a>
 </body>
 </html>
