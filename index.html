@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Shopping Cart Example</title>
+    <title>{{ restaurant.name }}</title>
 </head>
 <body>
-    <h1>Welcome to Our Store</h1>
-    <p> Items in cart: {{ cart_count }}</p>
+    <h1>Welcome to {{ restaurant.name }}</h1>
 
-    <a href="{{ url_for('add_to_cart', item_id=1) }}">Add Item 1</a><br>
-    <a href="{{ url_for('add_to_cart', item_id=2) }}">Add Item 2</a><br>
-    <a href="{{ url_for('add_to_cart') }}">Clear Cart</a>
+    {% if restaurant.logo %}
+        <img src="{{ restaurant.logo.url }}" alt="{{ restaurant.name }} Logo" width="200">
+    {% else %}
+        <p>No logo available</p>
+    {% endif %}
+        
+    <p>{{ restaurant.history }}</p>
+    <p>{{ restaurant.mission }}</p>
 </body>
 </html>
