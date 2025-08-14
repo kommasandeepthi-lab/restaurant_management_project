@@ -12,3 +12,10 @@ def faq_page(request):
         ("FAQ", "")
     ]
     return render(request, 'faq.html', {'breadcrumbs': breadcrumbs})
+
+def order_page(request):
+    breadcrumbs = [
+        ("Home", "/"),
+        ("Order Now", "")
+    ]
+    return render(request, 'order.html', {'breadcrumbs': breadcrumbs})
