@@ -45,6 +45,21 @@
         nav a:hover {
             text-decoration: underline;
         }
+        .order-button {
+            display: inline-block;
+            background-color: #ff5722;
+            color: white;
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: none;
+            translation: background-color 0.3s ease;
+        }
+        .order-button:hover {
+            background-color: #e64a19;
+        }
     </style>
 </head>
 <body>
@@ -54,6 +69,9 @@
     <header>
         <h1>Welcome to {{ restaurant_name }}</h1>
         <p class="tagline">"Where great taste meets warm hospitality."</p>
+        <div class="phone-number"> {{ restaurant_phone }}</div>
+
+        <a href="{% url 'order' %}" class="order-button">Order Now</a>
     </header>
 
     <nav>
