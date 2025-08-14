@@ -13,3 +13,12 @@ def about_view(request):
 def homepage(request):
     restaurant = Restaurant.objects.first()
     return render(request, 'homepage.html', {'restaurant': restaurant})
+
+def home_page(request):
+    breadcrumbs = [("Home", "/")]
+    context = {
+        'breadcrumbs': breadcrumbs,
+        'restaurant_name': 'My Restaurant'
+        'restaurant_phone': settings.RESTAURANT_PHONE
+    }
+    return render(request, 'home.html', context)
