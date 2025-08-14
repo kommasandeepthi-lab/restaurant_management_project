@@ -1,0 +1,14 @@
+<!-- templates/breadcrumbs.html -->
+<nav aria-label="breadcrumbs" style="margin-bottom: 15pxl">
+    <ol style="list-style: none; padding: 0; display: flex; gap: 5px; font-size: 14px;">
+        {% for name, url in breadcrumbs %}
+            {% if not forloop.last %}
+               <li>
+                   <a href="{{ url }}" style="text-decoration: none; color: #007bff;">{{ name }}</a> ,
+               </li> 
+            {% else %}
+               <li style="color: #555;">{{ name }}</li>
+            {% endif %}
+        {% endfor %}
+    </ol>
+</nav>
