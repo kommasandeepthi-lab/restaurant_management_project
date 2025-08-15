@@ -1,4 +1,16 @@
 <!-- menu.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu</title>
+</head>
+<body>
+    {% include "includes/breadcrumbs.html" %}
+
+    <h1>Our Menu</h1>
+    <p>Menu items eill be listed here.</p>
+</body>
+</html>
 {% for items in menu_items %}
     <div>
         <h3>{{ item.name }}</h3>
