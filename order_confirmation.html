@@ -12,7 +12,9 @@
 </head>
 <body>
     <div class="container">
+        {% include "include/breadcrumbs.html" %}
         <h1> Order Confirmed!</h1>
+        <p>Your order number: {{ order_number }}</p>
         <p>Thank you for your purchases. Your order has been successfully placed.</p>
         <p class="order-number">Order Number: {{ order_number }}</p>
     </div>
