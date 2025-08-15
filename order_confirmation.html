@@ -1,0 +1,20 @@
+<!-- templates/order_confirmation.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Confirmation</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        .container { border: 1px solid #ccc; padding: 20px; display: inline-block; border-radius: 8px; }
+        h1 { color: #28a745; }
+        .order-number { font-weight: bold; font-size: 18px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1> Order Confirmed!</h1>
+        <p>Thank you for your purchases. Your order has been successfully placed.</p>
+        <p class="order-number">Order Number: {{ order_number }}</p>
+    </div>
+</body>
+</html>
