@@ -1,33 +1,13 @@
 <!-- templates/home.html -->
-<!Doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Restaurant Home</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
-        form { display: inline-block; padding: 20px; border: 1px solid #ccc; border-radius: 6px; }
-        input { width: 100% padding: 8px; margin: 8px 0; }
-        button { background: #007BFF; color: white; border: none; padding: 8px 12px; cursor: pointer; }
-        button:hover { background: #0056b3; }
-        .error { color: red; font-size: 14px; margin-bottom: 8px; }
-    </style>
+    <title>{{ restaurant_name }}</title>
 </head>
 <body>
-    <h1>Welcome to Our Restaurant</h1>
+    {% include "includes/breadcrumbs.html" %}
 
-    {% if form.errors %}
-       <div class="error">Invalid username or password. Please try again.</div>
-    {% endif %}
-
-    <form method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        {{ form.username.label_tag }}
-        {{ form.username }}
-
-        {{ form.password.label_tag }}
-        {{ form.password }}
-
-        <button type="submit">Login</button>
-    </form>
+    <h1>Welcome to {{ restaurant_name }}</h1>
+    <p>Browse our menu and place your order!</p>
 </body>
 </html>
