@@ -1,21 +1,6 @@
-from django.shortcuts import rneder
+from django.shortcuts import render
+from django.contrib.auth.forms import AuthenticationForm
 
-def home-page(request):
-    breadcrumbs = [
-        ("Home", "/")
-    ]
-    return render(request, 'home.html', {'breadcrumbs': breadcrumbs, 'restaurant_name': 'My Restaurant'})
-
-def faq_page(request):
-    breadcrumbs = [
-        ("Home", "/"),
-        ("FAQ", "")
-    ]
-    return render(request, 'faq.html', {'breadcrumbs': breadcrumbs})
-
-def order_page(request):
-    breadcrumbs = [
-        ("Home", "/"),
-        ("Order Now", "")
-    ]
-    return render(request, 'order.html', {'breadcrumbs': breadcrumbs})
+def home(request):
+    login_form = AuthenticationForm(request, data=request.POST or None)
+    return render(request, 'home.html', {'form': login_form})
