@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from django.contrib.auth.forms import AuthenticationForm
+import random
 
-def home(request):
-    login_form = AuthenticationForm(request, data=request.POST or None)
-    return render(request, 'home.html', {'form': login_form})
+def order_confirmation(request):
+    order_number = random.randit(100000, 999999)
+    return render(request, 'order_confirmation.html', {'order_number': order_number})
