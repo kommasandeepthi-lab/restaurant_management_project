@@ -1,81 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- templates/home.html -->
+<!Doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>{{ restaurant_name }}</title>
+    <title>Restaurant Home</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            background-color: #fafafa;
-            color: #333;
-        }
-        header {
-            padding: 40px 20px;
-            background-color: #fff;
-            border-bottom: 1px solid #ddd;
-        }
-        h1 {
-            margin-bottom: 10px;
-            font-size: 36px;
-            color: #2c3e50;
-        }
-        .tagline {
-            font-size: 18px;
-            color: #777;
-            font-style: italic;
-            margin-bottom: 15px;
-        }
-        .phone_number {
-            font-size: 20px;
-            font-weight: bold;
-            color: #007bff;
-            margin-top: 10px;
-        }
-        nav {
-            margin-top; 20PX;
-        }
-        nav a {
-            text-decoration: none;
-            margin: 0 10px;
-            color: #007bff;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        .order-button {
-            display: inline-block;
-            background-color: #ff5722;
-            color: white;
-            padding: 12px 25px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 6px;
-            text-decoration: none;
-            margin-top: none;
-            translation: background-color 0.3s ease;
-        }
-        .order-button:hover {
-            background-color: #e64a19;
-        }
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        form { display: inline-block; padding: 20px; border: 1px solid #ccc; border-radius: 6px; }
+        input { width: 100% padding: 8px; margin: 8px 0; }
+        button { background: #007BFF; color: white; border: none; padding: 8px 12px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .error { color: red; font-size: 14px; margin-bottom: 8px; }
     </style>
 </head>
 <body>
+    <h1>Welcome to Our Restaurant</h1>
 
-    {% include 'breadcrumbs.html' %}
+    {% if form.errors %}
+       <div class="error">Invalid username or password. Please try again.</div>
+    {% endif %}
 
-    <header>
-        <h1>Welcome to {{ restaurant_name }}</h1>
-        <p class="tagline">"Where great taste meets warm hospitality."</p>
-        <div class="phone-number"> {{ restaurant_phone }}</div>
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form.username.label_tag }}
+        {{ form.username }}
 
-        <a href="{% url 'order' %}" class="order-button">Order Now</a>
-    </header>
+        {{ form.password.label_tag }}
+        {{ form.password }}
 
-    <nav>
-        <a href="{% url 'faq' %}">FAQ</a>
-    </nav>
+        <button type="submit">Login</button>
+    </form>
 </body>
 </html>
