@@ -1,10 +1,11 @@
 <!-- templates/breadcrumbs.html -->
-<nav aria-label="breadcrumbs" style="margin-bottom: 15pxl">
-    <ol style="list-style: none; padding: 0; display: flex; gap: 5px; font-size: 14px;">
+<nav aria-label="breadcrumbs" style="margin: 10px 0;">
+    <ol style="list-style: none; padding: 0; display: flex; gap: 5px; font-family: Arial;">
         {% for name, url in breadcrumbs %}
             {% if not forloop.last %}
                <li>
-                   <a href="{{ url }}" style="text-decoration: none; color: #007bff;">{{ name }}</a> ,
+                   <a href="{{ url }}" style="text-decoration: none; color: #007BFF;">{{ name }}</a> ,
+                   &gt;
                </li> 
             {% else %}
                <li style="color: #555;">{{ name }}</li>
