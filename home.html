@@ -27,5 +27,20 @@
     {% else %}
     <p>No specials available today. Please check back later!</p>
     {% endif %}
+
+    <!-- Opening Hours -->
+    <h2 class="mb-3">Opening Hours</h2>
+    {% if hours %}
+    <ul class="list-group">
+        {% for h in hours %}
+        <li class="list-group-item d-flex justify-content-between">
+            <span>{{ h.day }}</span>
+            <span>{{ h.open_item|time:"h:i A" }} - {{ h.close_time|time:"h:i A" }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Opening hours not available.</p>
+    {% endif %}
 </body>
 </html>
