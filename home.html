@@ -1,86 +1,31 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant Homepage</title>
-    <style>
-        /* Background that always covers the screen */
-    body {
-       margin:0;
-       font-family: "Segoe UI", Tahoma, sans-serif;
-       background: url("{% static 'your_app/images/homepage-bg.jpg' %}") no-repeat center center;
-       background-size: cover;
-       background-attachment: fixed;
-       color: white;
-    }
-
-    /* Dark overlay to keep text readable */
-    .overlay {
-       background: rgba(0, 0, 0, 0.55);
-       min-height: 100vh;
-       display: flex;
-       flex-direction: column;
-       justify-content: center;
-       align-items: center;
-       text-align: center;
-       padding: 20px;
-    }
-
-    h1 {
-       font-size: 3rem;
-       margin-bottom: 0.5rem;
-    }
-
-    p {
-       font-size: 1.25rem;
-       max-width: 600px;
-    }
-
-    /* Responsive gallery */
-    .gallery {
-       display: grid;
-       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-       gap: 20px;
-       margin-top: 40px;
-       width: 90%;
-       max-width: 1200px;
-    }
-
-    .gallery img {
-       width: 100%;
-       height: auto;
-       border-radius: 12px;
-       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-       transitiion: transform 0.3s ease;
-    }
-
-    .gallery img:hover {
-       transform: scale(1.05);
-    }
-
-    @media (max-width: 768px) {
-       h1 {
-           font-size: 2rem;
-        }
-        p {
-           font-size: 1rem;
-        }
-    }
-    </style>
+    <link rel="stylesheet" href="">
 </head>
-<body>
-    <div class="overlay">
-        <h1>Welcome to Our Restaurant</h1>
-        <p>Serving fresh, delicious meals prepared with love . Come experience the taste!</p>
+<body class="container mt-5">
+    <h1 class="mb-4">Welcome to Our Restaurant</h1>
 
-        <!-- Food Image Gallery -->
-        <div class="gallery">
-            <img src="{% static 'your_app/images/dish1.jpg' %}" alt="Dish 1">
-            <img src="{% static 'your_app/images/dish2.jpg' %}" alt="Dish 2">
-            <img src="{% static 'your_app/images/dish3.jpg' %}" alt="Dish 3">
+    <h2 class="mb-3">Today's Specials</h2>
+    {% if specials %}
+    <div class="row">
+        {% for item in specials %}
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.name }}</h5>
+                    <p class="card-text">{{ item.description }}</p>
+                    <p class="fw-bold">{{ item.price }}</p>
+                </div>
+            </div>
         </div>
+        {% endfor %}
+    {% else %}
     </div>
+    {% else %}
+    <p>No specials available today. Please check back later!</p>
+    {% endif %}
 </body>
 </html>
