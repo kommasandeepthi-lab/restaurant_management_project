@@ -20,4 +20,11 @@
             <img src="{{ item.image.url }}" alt="{{ item.name }}" width="200">
         {% endif %}
     </div>
+
+    {% for item in menu_items %}
+    <div class="card p-3 m-2">
+        <h4>{{ item.name }}</h4>
+        <p>{{ item.price }}</p>
+        <a href="{% url 'add_to_cart' item.id %}" class="btn btn-success">Add to Cart</a>
+    </div>
 {% endfor %}
