@@ -3,6 +3,24 @@
 {% block title %}Feedback - {{ restaurant_name }}{% endblock %}
 
 {% block content %}
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Feedback</title>
+    <link rel="stylesheet" href="">
+</head>
+<body class="container mt-5">
+    <h2 class="mb-4">We value your feedback!</h2>
+    <form method="post" class="card p-4 shadow-lg">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+</body>
+</html>
 <h2>Leave Your Feedback</h2>
 
 <form method="POST">
