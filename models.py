@@ -1,11 +1,9 @@
 from django.db import models
 
-class Restaurant(models.Model)
+class Feedback(models.Model):
     name = models.CharField(max_length=100)
-    history = models.TextField()
-    mission = models.TextField()
-    logo = models.ImageField(upload_to='restaurant_logos/')
-    phone_number = models.CharField(max_length=15)
+    feedback_text = models.TextField()
+    submitted_at = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return self.name
+        return f"Feedback from {self.name}"
