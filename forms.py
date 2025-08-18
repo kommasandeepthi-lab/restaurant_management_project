@@ -1,6 +1,11 @@
 from django import forms
+from .models import Feedback
 
-class ContactForm(forms.Form):
-    name = forms.CharField(max_length=100)
-    email = forms.EmailField()
-    message = forms.CharField(widget=forms.Textarea)
+class FeedbackForm(forms.ModelForm):
+    class Meta:
+        model = Feedback
+        fields = ['name', 'feedback_text']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your Name'}),
+            'feedback_text': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'placeholder': 'Write your feedback here...'}),
+        }
