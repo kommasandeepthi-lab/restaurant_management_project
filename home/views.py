@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import requests
 from django.conf import settings
+from .models import TodaySpecial
 # Create your views here.
 
 def home_view(request):
@@ -17,3 +18,7 @@ def home_view(request):
     except Exception as e:
         menu_items = []
     return render(request, 'home.html', {'menu_items': menu_items})
+
+def homepage(request):
+    specials = TodaySpecial.objects.all()
+    return render(request, 'home.html', {'specials': specials})
