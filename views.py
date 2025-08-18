@@ -1,9 +1,12 @@
-from django.shortcuts import render
-import random
+from django.shortcuts import render, redirect
+from .forms import FeedbackForm
 
-def order_confirmation(request):
-    order_number = random.randit(100000, 999999)
-    return render(request, 'order_confirmation.html', {'order_number': order_number})
-
-def privacy_policy(request):
-    return render(request, 'privacy_policy.html')
+def feedback_view(request):
+    if request.method == "POST":
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('feedback')
+    else:
+        form = FeedbackForm()
+    return render(request, 'feedback.html', {'form': form})
