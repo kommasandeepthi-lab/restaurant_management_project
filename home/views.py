@@ -1,7 +1,7 @@
 from django.shortcuts import render
 import requests
 from django.conf import settings
-from .models import TodaySpecial
+from .models import OpeningHour, TodaySpecial
 # Create your views here.
 
 def home_view(request):
@@ -21,4 +21,5 @@ def home_view(request):
 
 def homepage(request):
     specials = TodaySpecial.objects.all()
-    return render(request, 'home.html', {'specials': specials})
+    hours = OpeningHour.objects.all()
+    return render(request, 'home.html', {'specials': specials, 'hours': hours})
