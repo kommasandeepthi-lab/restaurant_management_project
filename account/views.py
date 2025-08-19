@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.conf import settings
 from .models import Restaurant
+from .models import RestaurantInfo
 # Create your views here.
 
 def homepage_view(request):
@@ -22,3 +23,7 @@ def home_page(request):
         'restaurant_phone': settings.RESTAURANT_PHONE
     }
     return render(request, 'home.html', context)
+
+def about_view(request):
+    restaurant = RestaurantInfo.objects.first()
+    return render(request, "about.html", {"restaurant": restaurant})
