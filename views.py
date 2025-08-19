@@ -1,31 +1,18 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import MenuItem
-from .utils import get_cart, save_cart
+from django.shortcuts import render
+from .forms import ContactForm
 
-def add_to_cart(request, item_id):
-    item = get_object_or_404(MenuItem, id=item_id)
-    cart = get_cart(request)
+def contact_view(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
 
-    if str(item_id) in cart:
-        cart[str(item_id)]['quantity'] += 1
-    else :
-        cart[str(item_id)] = {
-            'name': item.name,
-            'price': str(item.price),
-            'quantity': 1
-        }
+            print("Message received:", name, email, message)
 
-    save_cart(request, cart)
-    return redirect('view_cart')
-
-def view_cart(request):
-    cart = get_cart(request)
-    total = sum(float(item['price']) * item['quantity'] for item in cart.values())
-    return render(request, 'cart.html', {'cart': cart, 'total': total})
-
-def remove_from_cart(request, item_id):
-    cart = get_cart(request)
-    if str(item_id) in cart:
-        del cart[str(item_id)]
-        save_cart(request, cart)
-    return redirect('view_cart')
+            return render(request, "contact_success.html", {"name": name})
+    else:
+        form = ContactForm()
+    
+    return render(request, "contact.html", {"form": form})
