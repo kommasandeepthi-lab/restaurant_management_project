@@ -1,17 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>About Us - {{ info.name }}</title>
+    <meta charset="UTF-8">
+    <title>About Us</title>
+    <style>
+        body {
+           font-family: Arial, sans-serif;
+           background: #f4f6f9;
+           margin: 0;
+           padding: 0;
+        }
+        .about-container {
+           max-width: 800px;
+           margin: 50px auto;
+           background: #fff;
+           padding: 30px;
+           border-radius: 12px;
+           box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h1{ 
+           color: #0077cc;
+           margin-bottom: 20px;
+           text-align: justify;
+        }
+    </style>
 </head>
 <body>
-    <h1>About {{ info.name }}</h1>
-
-    <h2>Our History</h2>
-    <p>{{ info.history }}</p>
-
-    <h2>Our Mission</h2>
-    <p>{{ info.mission }}</p>
-
-    <a href="/">Back to Home</a>
+    <div class="about-container">
+        {% if restaurant %}
+        <h1>About {{ restaurant.name }}</h1>
+        <p>{{ restaurant.description }}</p>
+    {% else %}
+        <h1>About Us</h1>
+        <p>Restaurant details will be updated soon.</p>
+    {% endif %}
+    </div>
 </body>
 </html>
