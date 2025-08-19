@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import ContactForm
 
 def contact_view(request):
@@ -12,7 +12,12 @@ def contact_view(request):
             print("Message received:", name, email, message)
 
             return render(request, "contact_success.html", {"name": name})
+
+            return redirect("thank you")
     else:
         form = ContactForm()
     
     return render(request, "contact.html", {"form": form})
+
+def thank_you_view(request):
+    return render(request, "thank_you.html")
