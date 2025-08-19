@@ -6,6 +6,7 @@ from . import views
 urlpatterns = [
     path('', include('your_app_name.urls')),
     path('', views.homepage, name='homepage'),
+    path("about/", views.about_view, name="about"),
 ]
 
 if settings.DEBUG:
