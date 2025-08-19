@@ -13,7 +13,17 @@
 <body>
     <div class="contact-container">
     <h1>Contact Us</h1>
-    <form method="post" class="contact-form">
+
+    <!-- Restaurant Address -->
+    {% if address %}
+    <div class="restaurant-address">
+        <h3>Our Location</h3>
+        <p>{{ address.street }}</p>
+        <p>{{ address.city }}, {{ address.state }} - {{ address.zip_code }}</p>
+    </div>
+    {% endif %}
+    
+        <form method="post" class="contact-form">
         {% csrf_token %}
         {{ form.as_p }}
     <button type="submit">Send Message</button>
