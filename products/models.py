@@ -17,3 +17,10 @@ class RestaurantAddress(models.Model):
 
     def __str__(self):
         return f"{self.street}, {self.city}, {self.state} {self.zip_code}"
+
+class RestaurantInfo(models.Model):
+    name = models.CharField(max_length=150)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.name
