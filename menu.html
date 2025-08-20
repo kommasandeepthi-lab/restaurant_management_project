@@ -21,6 +21,11 @@
                 {% endif %}
 
             <strong>{{ item.name }}</strong> - {{ item.price }}
+            {% if not item.available %}
+            <span style="color:red: font-weight:bold;">
+                ({{ item.available|availability_status }})
+            </span>
+            {% endif %}
             <p>{{ item.description }}</p>
         </li>
         {% empty %}
