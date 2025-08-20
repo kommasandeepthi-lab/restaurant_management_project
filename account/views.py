@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Chef
 from django.conf import settings
 from .models import Restaurant
 from .models import RestaurantInfo
@@ -27,3 +28,7 @@ def home_page(request):
 def about_view(request):
     restaurant = RestaurantInfo.objects.first()
     return render(request, "about.html", {"restaurant": restaurant})
+
+def about_chef(request):
+    chef = Chef.objects.first()
+    return render(request, "about_chef.html", {"chef": chef})
