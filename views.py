@@ -1,12 +1,15 @@
-from django.core.paginator import Paginator
-from django.shortcuts import render
-from .models import MenuItem
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import ContactForm
 
-def menu_item(request):
-    items = MenuItem.objects.all().order_by("name")
-    paginator = Paginator(items, 5)
+def Contact_view(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Thank you, your message has been sent!")
+            return redirect("contact")
+    else:
+        form = ContactForm()
 
-    page_number = request.GET.get("page")
-    page_obj = paginator.get_page(page_number)
-
-    return render(request, "menu.html", {"page_obj": page_obj})
+    return render(request, "contact.html", {"form": form})
