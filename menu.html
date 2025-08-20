@@ -12,7 +12,15 @@
     <ul>
         {% for item in page_obj %}
         <li>
-            <strong>{{ item.name }}</strong>
+            {% if item.image %}
+            <img src="{{ item.image.url }}"
+                 alt="Image of {{ item.name }} - {{ item.description|default:'Delicious dish' }}">
+            {% else %}
+            <img src="{% static 'images/placeholder.png' %}"
+                 alt="Placeholder image for {{ item.name }}">
+                {% endif %}
+
+            <strong>{{ item.name }}</strong> - {{ item.price }}
             <p>{{ item.description }}</p>
         </li>
         {% empty %}
