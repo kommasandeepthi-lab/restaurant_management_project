@@ -1,15 +1,12 @@
-from django.shortcuts import render, redirect
-from .forms import ContactForm
-from .models import RestaurantAddress
+from django.core.paginator import Paginator
+from django.shortcuts import render
+from .models import MenuItem
 
-def contact_view(request):
-    address = RestaurantAddress.objects.first()
+def menu_item(request):
+    items = MenuItem.objects.all().order_by("name")
+    paginator = Paginator(items, 5)
 
-    if request.method == "POST";
-       form = ContactForm(request.POST)
-       if form.is_valid():
-        return redirect("thank_you")
-    else:
-        form = ContactForm()
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
 
-    return render(request, "contact.html", {"form": form, "address": address})
+    return render(request, "menu.html", {"page_obj": page_obj})
