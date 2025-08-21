@@ -30,6 +30,27 @@
         {% if restaurant %}
         <h1>About {{ restaurant.name }}</h1>
         <p>{{ restaurant.description }}</p>
+
+        <!-- templates/about.html>
+
+        {% extends "base.html" %}
+
+        {% block title %}About Us | My Site{% endblock%}
+
+        {% block content %}
+
+        <h1>About Us</h1>
+        <p>
+            Welcome to our website! We are passionate about delivering quality content
+            and services to our users.
+        </p>
+        <p>
+            This page is a placeholder for now. In the future, we'll add more details
+            about our mission, vision, and team.
+        </p>
+        {% endblock %}
+
+
     {% else %}
         <h1>About Us</h1>
         <p>Restaurant details will be updated soon.</p>
