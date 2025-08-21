@@ -24,3 +24,15 @@ class ItemView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def home(request):
+        opening_hours = {
+            "Monday": "9:00 AM - 9:00 PM",
+            "Tuesday": "9:00 AM - 9:00 PM",
+            "Wednesday": "9:00 AM - 9:00 PM",
+            "Thursday": "9:00 AM - 10:00 PM",
+            "Friday": "9:00 AM - 10:00 PM",
+            "Saturday": "10:00 AM - 11:00 PM",
+            "Sunday": "Closed",
+        }
+        return render(request, "home.html", {"opening_hours": opening_hours})
