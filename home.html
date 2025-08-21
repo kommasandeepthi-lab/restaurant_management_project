@@ -42,5 +42,24 @@
     {% else %}
     <p>Opening hours not available.</p>
     {% endif %}
+
+    <!-- templates/home.html -->
+    {% extends "base.html" %}
+
+    {% block title %}Home | My Site{% endblock %}
+
+    {% block content %}
+        <h1>Welcome to Our Restaurant</h1>
+        <p>We are glad to serve you. Check out our opening hours below:</p>
+
+        <h2>Opening Hours</h2>
+        <ul style="list-style: none; padding: 0; font-size: 16px;">
+            {% for day, hours in opening_hours.items %}
+                <li>
+                    <strong>{{ day }}:</strong> {{ hours }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endblock %}
 </body>
 </html>
