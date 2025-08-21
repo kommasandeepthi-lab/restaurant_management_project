@@ -23,3 +23,6 @@ def homepage(request):
     specials = TodaySpecial.objects.all()
     hours = OpeningHour.objects.all()
     return render(request, 'home.html', {'specials': specials, 'hours': hours})
+
+def about(request):
+    return render(request, "about.html")
