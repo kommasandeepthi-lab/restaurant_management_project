@@ -1,28 +1,30 @@
+<!-- templates/base.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>{% block title %}{{ restaurant_name }}{% endblock %}</title>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Site{% endblock %}</title>
     <style>
         footer {
-           background-color: #333;
-           color: white;
-           text-align: center;
-           padding: 10px;
-           position: fixed;
-           left: 0;
-           bottom: 0;
-           width: 100%;
-           font-size: 14px;
-           line-height: 1.4;
+            background: #f4f4f4;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
         }
     </style>
 </head>
 <body>
-    {% block content %}{% endblock %}
+    <!-- Page Content -->
+    <main>
+        {% block content %}
+        {$ endblock %}
+    </main>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; {{ restaurant_name }} {{ now|date:"Y" }}. All rights reserved.</p>
-        <p class="footer-hours">Mon-Fri: 11am-9pm, Sat-Sun: 10am-10pm</p>
+        &copy: {{ current_year }} My Website. All rights reserved.
     </footer>
 </body>
 </html>
