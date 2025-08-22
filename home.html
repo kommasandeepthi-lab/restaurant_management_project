@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Restaurant Homepage</title>
+    <title>{{ page_title|default:"Foodie Restaurant }}</title>
     <link rel="stylesheet" href="">
 </head>
 <body class="container mt-5">
-    <h1 class="mb-4">Welcome to Our Restaurant</h1>
-
+    <h1> Welcome to Foodie Restaurant</h1>
+    <p>Delicious food served in the Foodies Restaurant!</p>
     <h2 class="mb-3">Today's Specials</h2>
     {% if specials %}
     <div class="row">
