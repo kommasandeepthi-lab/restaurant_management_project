@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Chef
 from django.conf import settings
 from .models import Restaurant
 from .models import RestaurantInfo
+from .forms import SubscriptionForm
 # Create your views here.
 
 def homepage_view(request):
@@ -38,3 +39,14 @@ def home(request):
         "page_title": "Foodie Restaurant"
     }
     return render(request, "home.html", context)
+
+def home(request):
+    if request.method == "POST":
+        form = SubscriptionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = SubscriptionForm()
+
+    return render(request, "home.html, {"form": form})
