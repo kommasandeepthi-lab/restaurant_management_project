@@ -1,5 +1,6 @@
 from django import forms
 from .models import Feedback
+from .models import Subscriber
 
 class FeedbackForm(forms.ModelForm):
     class Meta:
@@ -21,3 +22,14 @@ class ContactForm(forms.Form):
     message = forms.CharField(
         widget=forms.Textarea(attrs={'placeholder': 'Write your message here...', 'rows': 5})
     )
+
+class SubscriptionForm(forms.ModelForm):
+    class Meta:
+        model = Subscriber
+        fields = ['email']
+        widgets = {
+            'email': forms.EmailInput(attrs={
+                'placeholder': 'Enter your email',
+                'class': 'form-control'
+            })
+        }
