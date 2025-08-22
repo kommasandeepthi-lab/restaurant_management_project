@@ -32,3 +32,9 @@ def about_view(request):
 def about_chef(request):
     chef = Chef.objects.first()
     return render(request, "about_chef.html", {"chef": chef})
+
+def home(request):
+    context = {
+        "page_title": "Foodie Restaurant"
+    }
+    return render(request, "home.html", context)
