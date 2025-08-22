@@ -1,9 +1,8 @@
 from django.db import models
 
-class RestaurantInfo(models.Model):
-    name = models.CharField(max_length=200)
-    description = models.TextField()
-    image = models.ImageField(upload_to='restaurant/', blank=True, null=True)
+class Subscriber(models.Model):
+    email = models.EmailField(unique=True)
+    subscriber_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.name
+        return self.email
