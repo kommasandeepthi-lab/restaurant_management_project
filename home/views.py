@@ -2,6 +2,7 @@ from django.shortcuts import render
 import requests
 from django.conf import settings
 from .models import OpeningHour, TodaySpecial
+from datetime import datetime
 # Create your views here.
 
 def home_view(request):
@@ -29,3 +30,9 @@ def about(request):
 
 def reservations(request):
     return render(request, "reservations.html")
+
+def home(request):
+    context = {
+        "year": datetime.now().year
+    }
+    return render(request, "home.html", context)
