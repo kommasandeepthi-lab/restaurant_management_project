@@ -2,9 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ page_title|default:"Foodie Restaurant }}</title>
+    <title>{{ Home }}</title>
     <link rel="stylesheet" href="">
 </head>
+<style>
+    .btn {
+       display: inline-block;
+       padding: 10px 20px;
+       background: #e67e22;
+       color: #fff;
+       text-decoration: none;
+       border-radius: 6px;
+       font-weight: bold;
+    }
+    .btn:hover {
+       background: #d35400;
+    }
+</style>
+<body>
+    <h1>Welcome to Our Restaurant</h1>
+
+    <!-- Reservations Button -->
+    <a href="{% url 'reservations' %}" class="btn">Make a Reservations</a>
 <body class="container mt-5">
     <h1> Welcome to Foodie Restaurant</h1>
     <p>Delicious food served in the Foodies Restaurant!</p>
