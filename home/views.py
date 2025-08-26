@@ -49,3 +49,6 @@ def menu_view(request):
         menu_items = MenuItem.objects.all()
 
 return render(request, "menu.html", {"menu_items": menu_items, "query": query})
+
+def reservations_views(request):
+    return render(request, "reservations.html")
