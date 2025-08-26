@@ -4,6 +4,9 @@ from django.conf import settings
 from .models import Restaurant
 from .models import RestaurantInfo
 from .forms import SubscriptionForm
+from django.core.mail import send_mail
+from django.conf import settings
+from .forms import ContactForm
 # Create your views here.
 
 def homepage_view(request):
@@ -50,3 +53,35 @@ def home(request):
         form = SubscriptionForm()
 
     return render(request, "home.html, {"form": form})
+
+def contact_view(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data("name")
+            user_email = form.cleaned_data["email"]
+            message = form.cleaned_data["message"]
+
+            hardcoded_recipent = ""
+
+            subject = "We received your message"
+            body = (
+
+            )
+
+            send_mail(
+                subject=subject,
+                message=body,
+                from_email=getattr(settings,""),
+                receipient_list=[hardcoded_recipent],
+                fail_silently=False,
+            )
+            
+            return redirect("contact_success")
+        else:
+            form = ContactForm()
+
+        return render(request, "contact.html", {"form": form})
+
+def contact_success_view(request):
+    return render(request, "contact_success.html")
