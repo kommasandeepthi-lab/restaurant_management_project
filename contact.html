@@ -25,7 +25,7 @@
         {% endfor %}
 
         <!-- Contact Form -->
-        <form method="post">
+        <form method="post" novaliddate>
             {% csrf_token %
             {{ form.as_p }}
             <button type="submit">Send</button>
