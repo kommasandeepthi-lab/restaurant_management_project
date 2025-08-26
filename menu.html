@@ -1,127 +1,73 @@
-<!-- menu.html -->
-{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <title>Menu</title>
-</head>
     <style>
-    <body {
-       font-family: Arial, sans-serif;
-       background: #fafafa;
-       padding:20px;
-    }
+        body { font-family: Arial, sans-serif; background: #fafafa; padding:20px; }
+        h1 { text-align: center; margin-bottom: 20px; }
 
-    h1 {
-       text-align: grid;
-       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-       gap: 20px;
-    }
+        form.search-bar {
+           text-align: center;
+           margin-bottom: 30px;
+        }
 
-    .menu item {
-       background: #fff;
-       border: 1px solid #ddd;
-       border-radius: 10px;
-       padding: 15px;
-       box-shadow: 0 2px 6px rgba(0,0,0,0.1)
-       transition: transform 0.2s ease:
-    }
+        input[type="text"] {
+           padding: 8px;
+           width: 250px;
+           border: 1px solid #ccc;
+           border-radius: 6px;
+        }
 
-    .menu-item:hover {
-       transform: translate(-5px);
-       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
+        button {
+           padding: 8px 12px;
+           border: none;
+           background: #e67e22;
+           color: #fff;
+           border-radius: 6px;
+           cursor: pointer;
+        }
 
-    .menu-item h2 {
-       font-size: 1.2rem;
-       margin-bottom: 10px;
-       color: #444;
-    }
+        button:hover {
+           background: #d35400;
+        }
 
-    menu-item p {
-       margin: 5px 0;
-       color: #666;
-    }
+        menu-container {
+           display: grid;
+           grid-template-coloumns: repeat(auto-fill, minmax(250px, 1fr));
+           gap: 20px;
+        }
 
-    .price {
-       font-weight: bold;
-       color: #e67e22;
-       font-size: 1.1rem;
-    }
+        .menu-item {
+           background: #fff;
+           border: 1px solid #ddd;
+           border-radius: 10px;
+           padding: 15px;
+           box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .price { font-weight: bold; color: #e67e22; }
     </style>
-    
-<body>
-    {% include "includes/breadcrumbs.html" %}
+</head>
+</html>
 
-    <h1>Our Menu</h1>
-    <div class="menu-container">
-        {% for item in menu_items %}
-        <div class="menu-item">
-            <h2>{{ item.name }}</h2>
-            <p>{{ item.description }}</p>
-            <p class="price">{{ item.price }}</p>
-        </div>
-        {% empty %}
-        <p>No menu items available.</p>
-        {% endfor %}
+<!-- Search Form -->
+<form method="get" action="{url 'menu' %}" class="search-bar">
+    <input type="text" name="q" placeholder="Search menu..." value="{{ query|default:'' }}">
+    <button type="submit">Search</button>
+</form>
+
+<!--Menu Items -->
+<div class="menu-container">
+    {% for item in menu_items %}
+    <div class="menu-item">
+        <h2>{{ item.name }}</h2>
+        <p>{{ item.description }}</p>
+        <p class="price">{{ item.price }}</p>
     </div>
-    
-    <ul>
-        {% for item in page_obj %}
-        <li>
-            {% if item.image %}
-            <img src="{{ item.image.url }}"
-                 alt="Image of {{ item.name }} - {{ item.description|default:'Delicious dish' }}">
-            {% else %}
-            <img src="{% static 'images/placeholder.png' %}"
-                 alt="Placeholder image for {{ item.name }}">
-                {% endif %}
-
-            <strong>{{ item.name }}</strong> - {{ item.price }}
-            {% if not item.available %}
-            <span style="color:red: font-weight:bold;">
-                ({{ item.available|availability_status }})
-            </span>
-            {% endif %}
-            <p>{{ item.description }}</p>
-        </li>
-        {% empty %}
-        <li>No items available.</li>
-        {% endfor %}
-    </ul>
-
-    <!-- Pagination controls -->
-    <div class="pagination">
-        {% if page_obj.has_previous %}
-        <a href="?page=1">First</a>
-        <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
-        {% endif %}
-
-        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
-
-        {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">Next</a>
-        <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-        {% endif %}
-    </div>
-    <p>Menu items eill be listed here.</p>
+    {% empty %}
+    <p>No menu items found.</p>
+    {% endfor %}
+</div>
 </body>
 </html>
-{% for items in menu_items %}
-    <div>
-        <h3>{{ item.name }}</h3>
-        <p>{{ item.description }}</p>
-        <p>Price: {{ item.price }}</p>
-        {% if item.image %}
-            <img src="{{ item.image.url }}" alt="{{ item.name }}" width="200">
-        {% endif %}
-    </div>
-
-    {% for item in menu_items %}
-    <div class="card p-3 m-2">
-        <h4>{{ item.name }}</h4>
-        <p>{{ item.price }}</p>
-        <a href="{% url 'add_to_cart' item.id %}" class="btn btn-success">Add to Cart</a>
-    </div>
-{% endfor %}
