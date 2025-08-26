@@ -36,3 +36,6 @@ def home(request):
         "year": datetime.now().year
     }
     return render(request, "home.html", context)
+
+def our_story_view(request):
+    return render(request, "our_story.html")
