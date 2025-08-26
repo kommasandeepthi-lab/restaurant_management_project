@@ -3,6 +3,7 @@ import requests
 from django.conf import settings
 from .models import OpeningHour, TodaySpecial
 from datetime import datetime
+from .models import MenuItem
 # Create your views here.
 
 def home_view(request):
@@ -39,3 +40,12 @@ def home(request):
 
 def our_story_view(request):
     return render(request, "our_story.html")
+
+def menu_view(request):
+    query = request.GET.get("q")
+    if query:
+        menu_items = MenuItem.objects.filter(name__icontains=query)
+    else:
+        menu_items = MenuItem.objects.all()
+
+return render(request, "menu.html", {"menu_items": menu_items, "query": query})
