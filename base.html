@@ -67,6 +67,12 @@
         {% block breadcrumbs %}
             <span>Home</span>
         {% endblock %}
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'menu' %}">Menu</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+            <li><a href="{% url 'our_story %}">Our Story</a></li>
+        </ul>
     </nav>
     <!-- Page Content -->
     <main>
