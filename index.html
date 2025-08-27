@@ -1,26 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>{{ restaurant.name }}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Team - Restaurant</title>
+    <script src=""></script>
 </head>
-<body>
-    <h1>Welcome to {{ restaurant.name }}</h1>
+<body class="bg-gray-50 text-gray-900">
 
-    <p><strong>Phone:</strong> {{ restaurant.phone_number }}</p>
+<!-- Header -->
+<header class="bg-green-700 text-white py-6 shadow-md">
+    <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold"> Our Restaurant</h1>
+        <nav>
+            <ul class="flex gap-6 text-lg">
+                <li><a href="index.html" class="hover:underline">Home</a></li>
+                <li><a href="menu.html" class="hover:underline">Menu</a></li>
+                <li><a href="staff.html" class="underline font-semibold">Our Team</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
-    <h2>Our History</h2>
-    <p>{{ restaurant.history }}</p>
+<!--Staff Section -->
+<section class="max-w-6xl mx-auto px-auto px-4 py-12">
+    <h2 class="text-3xl font-bold text-center mb-10">Meet Our Team</h2>
 
-    <h2>Our Mission</h2>
-    <p>{{ restaurant.mission }}</p>
-
-    {% if restaurant.logo %}
-        <img src="{{ restaurant.logo.url }}" alt="{{ restaurant.name }} Logo" width="200">
-    {% else %}
-        <p>No logo available</p>
-    {% endif %}
-        
-    <p>{{ restaurant.history }}</p>
-    <p>{{ restaurant.mission }}</p>
+    <div class="grid md:grid-cols-3 gap-8">
+        <!-- Staff Card -->
+        <div class="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
+            <img src="">
+            <h3 class="text-xl font-semibold">Chef</h3>
+            <p class="text-gray-600 mt-2">Our Restaurant</p>
+        </div>
+    </div>
+</section>
 </body>
 </html>
