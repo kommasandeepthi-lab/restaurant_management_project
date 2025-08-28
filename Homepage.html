@@ -3,9 +3,85 @@
 <html>
 <head>
     <title>{{ restaurant.name }}</title>
+    <style>
+    <body {
+    font-family: Arial, sans-serif;
+    }
+    .carousel {
+       position: relative;
+       max-width: 700px;
+       margin: 20px auto;
+       overflow: hidden;
+       border-radius: 12px;
+       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .carousel img {
+       width: 100%;
+       display: block;
+    }
+    .controls {
+       position: absolute;
+       top: 50%;
+       width: 100%;
+       display: flex;
+       justify-content: space-between;
+       transform: translateY(-50%);
+    }
+    .controls button {
+       background: rgba(0,0,0,0.5);
+       border: none;
+       color: white;
+       padding: 10px;
+       cursor: pointer;
+       border-radius: 50%;
+    }
+    .controls button:hover {
+       background: rgba(0,0,0,0.7);
+    }
+    </style>
 </head>
 <body>
-    <h1>Welcome to {{ restaurant.name }}</h1>
+    <h1>Welcome to Our Restaurant</h1>
+
+    <div class="carousel">
+        <img src="">
+        <img src="">
+        <img src="">
+        <img src="">
+        <div class="controls">
+            <button id="prev">&#10094;</button>
+            <button id="prev">&#10095;</button>
+        </div>
+    </div>
+
+    <script>
+        const images = documnet,querySelectorAll('.carousel img');
+        const prevBtn = documnet.getElementById('prev');
+        const nextBtn = documnet.getElementById('next');
+        let current = 0;
+
+        function showImage(index) {
+           images.forEach((img, i) => {
+           img.classList.toggle('active', i == index);
+        });
+    }
+    prevBtn,addEventListener('click', () =>  {
+    current = (current === 0) ? images.length - 1 : current - 1;
+    showImage(current);
+    });
+
+    nextBtn,addEventListener('click', () => {
+    current = (current === images.length - 1) ? 0 : current + 1;
+    showImage(current);
+    });
+
+    setInterval(() => {
+       current = (current === Images.length - 1) ? 0 : current + 1;
+       showImage(current);
+    }, 5000);
+    </script>
+</body>
+</html>
     <p><strong>Address:</strong> {{ restaurant.ddress}}</p>
     <p>Phone: {{ restaurant.phone_number }}</p>
 
