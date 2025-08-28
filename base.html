@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}My Site{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -82,7 +84,13 @@
 
     <!-- Footer -->
     <footer class="text-center p-3">
-        <p>&copy: {{ year }} MyRestaurant. All rights reserved.</p>
+        <footer style="background:#333; color:white; text-align:center; padding: 15px; margin-top:20px;">
+            <p>&copy; {{ now|date:"Y" }} Our Restaurant</p>
+            <p><strong>Opening Hours:</strong></p>
+            <p>Monday - Friday : 10:00 AM to 10:00 PM</p>
+            <p>Saturday - Sunday : 9:00 AM to 11:00 PM </p>
+        </footer>
+            <p>&copy: {{ year }} MyRestaurant. All rights reserved.</p>
     </footer>
 </body>
 </html>
