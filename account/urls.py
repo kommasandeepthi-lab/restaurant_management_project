@@ -3,6 +3,8 @@ from django.conf.urls.static import static
 from django conf import settings
 from . import views
 from .views import contact_view, contact_success_view
+from django.shortcuts import render
+
 urlpatterns = [
     path('', include('your_app_name.urls')),
     path('', views.homepage, name='homepage'),
@@ -14,3 +16,8 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+def custom_permission_denied_view(request, exception=None):
+    return render(request, "403.html", status=403)
+
+handler403 = custom_permission_denied_view
