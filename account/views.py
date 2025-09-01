@@ -88,3 +88,7 @@ def contact_success_view(request):
 
 def privacy_policy(request):
     return render(request, "privacy_policy.html")
+
+def index(request):
+    address = RestaurantInfo.objects.first()
+    return render(request, "home.html", {"address": address})
