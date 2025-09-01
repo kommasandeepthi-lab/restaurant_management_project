@@ -4,8 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}My Site{% endblock %}</title>
+    {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
+<body>
+
+    <!-- Page Content -->
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer style="text-align: center; padding: 10px; margin-top:20px; background-color: #f5f5f5;">
+        <p>Powered by Django</p>
+    </footer>
+</body>
+</html>
     <style>
         body {
             font-family: Arial, sans-serif;
