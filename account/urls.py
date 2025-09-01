@@ -12,6 +12,7 @@ urlpatterns = [
     path("contact/", contact_view, name="contact"),
     path("contact/success/", contact_success_view, name="contact_success"),
     path("privacy_policy/", views.privacy_policy, name="privacy_policy"),
+    path("gallery/", gallery_view, name="gallery"),
 ]
 
 if settings.DEBUG:
@@ -21,3 +22,6 @@ def custom_permission_denied_view(request, exception=None):
     return render(request, "403.html", status=403)
 
 handler403 = custom_permission_denied_view
+
+def gallery_view(request):
+    return render(request, "gallery.html")
