@@ -36,4 +36,10 @@ class Chef(models.Model):
 
     def __str__(self):
         return self.name
+
+class RestaurantInfo(models.Model)
+address = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.address
         
