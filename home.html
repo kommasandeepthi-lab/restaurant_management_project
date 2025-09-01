@@ -23,6 +23,14 @@
     <h1>Welcome to Our Restaurant</h1>
     <p>Enjoy delicious food and a cozy atmosphere.</p>
 
+    { if address %}
+       <h3>Visit Us:</h3>
+       <p>{{ address.address }}</p>
+    {% else %}
+       <p><em>Address not available yet.</em></p>
+    {% endif %}
+{% endblock %}
+
     <!-- Simple Search Bar -->
     <div class="margin-top: 20px; text-align: center;">
         <input type="text" id="searchInput" placeholder="Search..."
