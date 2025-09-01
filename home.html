@@ -68,6 +68,19 @@
     <p>Opening hours not available.</p>
     {% endif %}
 
+    {% extends "base.html" %}
+
+    {% block title %}Home - My Restaurant{% endblock %}
+
+    {% block extra_head %}
+        <meta name="description" content="Welcome to our Restaurant!">
+    {% endblock %}
+
+    {% block content %}
+        <h1>Welcome to our Restaurant</h1>
+        <p>Enjoy delicious food and a cozy atmosphere.</p>
+    {% endblock %}
+
     <!-- templates/home.html -->
     {% extends "base.html" %}
 
