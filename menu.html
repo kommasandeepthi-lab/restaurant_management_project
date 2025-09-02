@@ -51,6 +51,16 @@
 </head>
 </html>
 
+<!-- Search menu -->
+<div class="menu-item">
+    <p>Search items of menu items</p>
+    <h1>menu.items</h1>
+    <p class="price">{{ search.items }}</p>
+</div>
+{% Search items %}
+<p>Search items in the menu</p>
+{% endfor %}
+
 <!-- Search Form -->
 <form method="get" action="{url 'menu' %}" class="search-bar">
     <input type="text" name="q" placeholder="Search menu..." value="{{ query|default:'' }}">
