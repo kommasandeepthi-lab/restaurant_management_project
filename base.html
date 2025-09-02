@@ -50,6 +50,30 @@
             <a href="reservation">Reservation</a>
         </nav>
 
+<!-- Navigation Bar -->
+        <nav style="background-color: #333; padding: 15px 0;">
+            <ul style="list-style: none; margin: 0; padding: 0; text-align: center;">
+                <li style="display: inline; margin: 0 20px;">
+                    <a href="{% url 'home' %}" style="color: #fff; text-decoration: none; font-size: 16px;">Home</a>
+                </li>
+                <li style="display: inline; margin: 0 20px;">
+                    <a href="{% url 'menu' %}" style="color: #fff; text-decoration: none; font-size: 16px;">Menu</a>
+                </li>
+                <li style="display: inline; margin: 0 20px;">
+                    <a href="{% url 'About Us' %}" style="color: #fff; text-decoration: none; font-size: 16px;">About Us</a>
+                </li>
+                <li style="display: inline; margin: 0 20px;">
+                    <a href="{% url 'Contact Us' %}" style="color: #fff; text-decoration: none; font-size: 16px;">Contact Us</a>
+                </li>
+                <li style="display: inline; margin: 0 20px;">
+                    <a href="{% url 'Location' %}" style="color: #fff; text-decoration: none; font-size: 16px;">Location</a>
+                </li>
+                <li style="display: inline; margin: 0 20px;">
+                    <a href="{% url 'reservation_page' %}" style="color: #fff; text-decoration: none; font-size: 16px;">Reservation</a>
+                </li>
+            </ul>
+        </nav>
+
         <a href="{% url 'home' %}">
             <img src="{% static 'images/logo.png' %}"
             alt="Foodie Restaurant"
