@@ -92,3 +92,6 @@ def privacy_policy(request):
 def index(request):
     address = RestaurantInfo.objects.first()
     return render(request, "home.html", {"address": address})
+
+def location(request):
+    return render(request, "location.html")
