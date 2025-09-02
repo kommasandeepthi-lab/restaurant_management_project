@@ -13,6 +13,7 @@ urlpatterns = [
     path("contact/success/", contact_success_view, name="contact_success"),
     path("privacy_policy/", views.privacy_policy, name="privacy_policy"),
     path("gallery/", gallery_view, name="gallery"),
+    path('location/', views.location_view, name='location'),
 ]
 
 if settings.DEBUG:
