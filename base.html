@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    {% block content %}{% endblock %}
+
+    <footer class="site-footer">
+        <p>&copy; {{ now|date:"Y" }} My Restaurant</p>
+        <p>123 Food Street, Hyderabad, India</p>
+    </footer>
 
     <!-- Page Content -->
     <div class="content">
