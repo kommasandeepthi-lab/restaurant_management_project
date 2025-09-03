@@ -95,3 +95,12 @@ def index(request):
 
 def location(request):
     return render(request, "location.html")
+
+def cart_view(request):
+    """
+    Simple shopping cart view.
+    For now, it just displays a placeholder.
+    Later, you can fetch items from session or DB.
+    """
+    cart_items = request.session.get("cart", [])
+    return render(request, "cart/cart.html", {"cart_items": cart_items})
