@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="container">
+    <h1>Your Shopping Cart</h1>
+    {% if cart_items %}
+    <ul>
+        {% for items in cart_items %}
+        <li>{{ items.name }} - {{ item.quantity }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Your cart is empty.</p>
+    {% endif %
+</section>
+{% endblock %}
