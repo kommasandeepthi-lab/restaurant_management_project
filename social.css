@@ -1,0 +1,25 @@
+/* static/css/social.css */
+.social-strip {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.social-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.social-link {
+    display: inline-flex;
+    padding: 0.6rem;
+    border-radius: 9999px;
+    border: 1px solid #e5e7eb;
+    text-decoration: none;
+    transition: transform 120ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.social-link:hover {
+    transform: translateY(-2px);
+    background: #f9fafb;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
