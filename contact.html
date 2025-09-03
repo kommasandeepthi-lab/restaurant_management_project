@@ -29,6 +29,28 @@
             {% csrf_token %
             {{ form.as_p }}
             <button type="submit">Send</button>
+            <div>
+                {{ form.name.label_tag }}<br>
+                {{ form.name }}
+                {{ form.name.errors }}
+            </div>
+            <div>
+                {{ form.email.label_tag }}</div>
+                {{ form.email }}
+                {{ form.email.errors }}
+            </div>
+            <div>
+                {{ form.subject.label_tag }}
+                {{ form.subject }}
+                {{ form.subject.errors }}
+            </div>
+            <div>
+                {{ form.message.label_tag }}
+                {{ form.message }}
+                {{ form.message.errors }}
+            </div>
+
+            <button type="submit">Send message</button>
         </form>
 
 <section style="padding: 40px; text-align: center;">
