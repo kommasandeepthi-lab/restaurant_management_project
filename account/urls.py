@@ -14,6 +14,8 @@ urlpatterns = [
     path("privacy_policy/", views.privacy_policy, name="privacy_policy"),
     path("gallery/", gallery_view, name="gallery"),
     path('location/', views.location_view, name='location'),
+    path("contact/", views.contact_view, name="contact"),
+    path("contact/success/", views.contact_success_view, name="contact_success"),
 ]
 
 if settings.DEBUG:
