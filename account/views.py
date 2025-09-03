@@ -104,3 +104,6 @@ def cart_view(request):
     """
     cart_items = request.session.get("cart", [])
     return render(request, "cart/cart.html", {"cart_items": cart_items})
+
+def contact_success_view(request):
+    return render(request, "home/contact_success.html")
