@@ -33,3 +33,54 @@
 .search-btn:hover {
     background: #a93226;
 }
+
+/* News & Announcements Section */
+.news-section {
+    background: #f9f9f9;
+    padding: 50px 20px;
+    border-top: 2px solid #eee;
+    border-bottom: 2px solid #eee;
+}
+
+.news section .section-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.news-list {
+    list-style: none;
+    padding: 0;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.news-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.news-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.news-date {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #c0392b;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.news-text {
+    font-size: 1rem;
+    color: #555;
+    margin: 0;
+}
