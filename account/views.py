@@ -107,3 +107,9 @@ def cart_view(request):
 
 def contact_success_view(request):
     return render(request, "home/contact_success.html")
+
+def place_order(request):
+    return redirect("thank_you")
+
+def thank_you(request):
+    return render(request, "thank_you.html")
