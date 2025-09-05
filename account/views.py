@@ -113,3 +113,12 @@ def place_order(request):
 
 def thank_you(request):
     return render(request, "thank_you.html")
+
+def sitemap_view(request):
+    """
+    Render a simple sitemap page showing all URL names and links.
+    """
+    url_patterns = get_resolver().reverse_dict.keys()
+    url_list = [url for url in url_patterns if isinstance(url, str)]
+
+    return render(request, "sitemap.html", {"url_list": url_list})
