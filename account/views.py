@@ -122,3 +122,6 @@ def sitemap_view(request):
     url_list = [url for url in url_patterns if isinstance(url, str)]
 
     return render(request, "sitemap.html", {"url_list": url_list})
+
+def careers(request):
+    return render(request, "careers.html")
