@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sitemap</title>
+</head>
+<body>
+    <h1>Website Sitemap</h1>
+    <ul>
+        {% for name in url_list %}
+        <li><a href="{% url name %}">{{ name|capfirst }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
