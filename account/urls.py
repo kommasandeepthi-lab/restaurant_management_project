@@ -16,6 +16,9 @@ urlpatterns = [
     path('location/', views.location_view, name='location'),
     path("contact/", views.contact_view, name="contact"),
     path("contact/success/", views.contact_success_view, name="contact_success"),
+    path('menu/', views.menu_view, name="menu"),
+    path('reservation', views.reservation_view, name='reservation'),
+    path('order', views.order_view, name='order'),
 ]
 
 if settings.DEBUG:
