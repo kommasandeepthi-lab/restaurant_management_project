@@ -125,3 +125,5 @@ def sitemap_view(request):
 
 def careers(request):
     return render(request, "careers.html")
+
+    
