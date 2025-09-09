@@ -19,6 +19,7 @@ urlpatterns = [
     path('menu/', views.menu_view, name="menu"),
     path('reservation', views.reservation_view, name='reservation'),
     path('order', views.order_view, name='order'),
+    path("cart/", views.cart_view, name="cart"),
 ]
 
 if settings.DEBUG:
