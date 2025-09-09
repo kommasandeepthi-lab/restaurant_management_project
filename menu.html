@@ -2,18 +2,31 @@
 <html>
 <head>
     <title>Menu</title>
-<body>
-    <h1>Menu</h1>
-    <div id="menu-items">
-        {% for product in products %}
-        <div>
-            <h3>{{ product.name }}</h3>
-            <p>{{ product.price }}</p>
-            <button onclick="addToCart({{ product.id }})">Add to Cart</button>
-        </div>
-        {% endfor %}
-    </div>
-
-    <h2 id="cart-total">Total: {{ request.session.cart|default:{} }}</h2>
-</body>
+    <style>
+        .menu-item {
+            margin: 15px 0;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .menu-item h3 {
+            margin: 0;
+        }
+        .price {
+            font-weight: bold;
+            color: green;
+        }
+    </style>
 </head>
+<body>
+    <h1>Our Menu</h1>
+
+    {% for item in items %}
+    <div class="menu-item">
+        <h3>{{ item.name }} <span class="price">{{ item.price }}</span></h3>
+        <p>{{ item.description }}</p>
+    </div>
+    {% empty %}
+    <p>No items available right now.</p>
+    {% endfor %}
+</body>
+</html>
