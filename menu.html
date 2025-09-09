@@ -1,95 +1,19 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8">
     <title>Menu</title>
-    <style>
-        body { font-family: Arial, sans-serif; background: #fafafa; padding:20px; }
-        h1 { text-align: center; margin-bottom: 20px; }
-
-        form.search-bar {
-           text-align: center;
-           margin-bottom: 30px;
-        }
-
-        input[type="text"] {
-           padding: 8px;
-           width: 250px;
-           border: 1px solid #ccc;
-           border-radius: 6px;
-        }
-
-        button {
-           padding: 8px 12px;
-           border: none;
-           background: #e67e22;
-           color: #fff;
-           border-radius: 6px;
-           cursor: pointer;
-        }
-
-        button:hover {
-           background: #d35400;
-        }
-
-        menu-container {
-           display: grid;
-           grid-template-coloumns: repeat(auto-fill, minmax(250px, 1fr));
-           gap: 20px;
-        }
-
-        .menu-item {
-           background: #fff;
-           border: 1px solid #ddd;
-           border-radius: 10px;
-           padding: 15px;
-           box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
-
-        .price { font-weight: bold; color: #e67e22; }
-    </style>
-</head>
-</html>
-
-<!-- Search menu -->
-<div class="menu-item">
-    <p>Search items of menu items</p>
-    <h1>menu.items</h1>
-    <p class="price">{{ search.items }}</p>
-</div>
-{% Search items %}
-<p>Search items in the menu</p>
-{% endfor %}
-
-<!-- Search Form -->
-<form method="get" action="{url 'menu' %}" class="search-bar">
-    <input type="text" name="q" placeholder="Search menu..." value="{{ query|default:'' }}">
-    <button type="submit">Search</button>
-</form>
-
-<!--Menu Items -->
-<div class="menu-container">
-    {% for item in menu_items %}
-    <div class="menu-item">
-        <h2>{{ item.name }}</h2>
-        <p>{{ item.description }}</p>
-        <p class="price">{{ item.price }}</p>
+<body>
+    <h1>Menu</h1>
+    <div id="menu-items">
+        {% for product in products %}
+        <div>
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.price }}</p>
+            <button onclick="addToCart({{ product.id }})">Add to Cart</button>
+        </div>
+        {% endfor %}
     </div>
-    {% empty %}
-    <p>No menu items found.</p>
-    {% endfor %}
 
-<!-- Reservation Section -->
-<section class="reservation-section" style="text-align: center; padding: 40px 20px; background-color: #f9f9f9;">
-    <h2 style="font-size: 28px; margin-bottom: 15px; color: #333;">Plan your Visit</h2>
-    <p style="font-size: 16px; color: #555; max-width: 600px; margin: 0 auto 25px;">
-        Our reservation system allow you to book a table
-    </p>
-    <a href="{% url 'reservation_page' %}" class="reservation-btn"
-    style="display: inline-block; padding: 12px 25px; background-color: #e74c3c; color: #fff; font-size: 16px; border-radius: 6px; text-decoration: none;">
-    Make a Reservation
-    </a>
-</section>
-</div>
+    <h2 id="cart-total">Total: {{ request.session.cart|default:{} }}</h2>
 </body>
-</html>
+</head>
