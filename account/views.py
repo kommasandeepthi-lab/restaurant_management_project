@@ -126,4 +126,12 @@ def sitemap_view(request):
 def careers(request):
     return render(request, "careers.html")
 
+def cart_view(request):
+    items = CartItem.objects.all()
+    total_price = sum(item.get_total() for item in items)
+    return render(request, "home.html", {
+        "items": items,
+        "total_price": total_price
+    })
+
     
