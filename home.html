@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ Home }}</title>
+    <title>Restaurant Home</title>
     <link rel="stylesheet" href="">
 </head>
+<body>
+    <h1>Welcome to {{ restaurant.name }}</h1>
+    <p>{{ restaurant.description }}</p>
+    <p><strong>Address:</strong> {{ restaurant.address }}</p>
+</body>
 <style>
     .btn {
        display: inline-block;
