@@ -20,6 +20,7 @@ urlpatterns = [
     path('reservation', views.reservation_view, name='reservation'),
     path('order', views.order_view, name='order'),
     path("cart/", views.cart_view, name="cart"),
+    path("reservations/", views.reservations, name="reservations"),
 ]
 
 if settings.DEBUG:
