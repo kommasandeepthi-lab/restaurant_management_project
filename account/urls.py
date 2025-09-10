@@ -21,6 +21,7 @@ urlpatterns = [
     path('order', views.order_view, name='order'),
     path("cart/", views.cart_view, name="cart"),
     path("reservations/", views.reservations, name="reservations"),
+    path("sitemap.xml", views.sitemap, name="sitemap"),
 ]
 
 if settings.DEBUG:
