@@ -137,4 +137,8 @@ def cart_view(request):
 def reservations(request):
     return render(request, "home.html")
 
+
+def home(request):
+    return render(request,"home.html")
+
     
