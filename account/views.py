@@ -134,4 +134,7 @@ def cart_view(request):
         "total_price": total_price
     })
 
+def reservations(request):
+    return render(request, "home.html")
+
     
