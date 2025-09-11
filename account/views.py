@@ -58,6 +58,7 @@ def contact_view(request):
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
+            form.save()
             name = form.cleaned_data("name")
             user_email = form.cleaned_data["email"]
             message = form.cleaned_data["message"]
@@ -76,6 +77,11 @@ def contact_view(request):
                 receipient_list=[hardcoded_recipent],
                 fail_silently=False,
             )
+            
+            return render(request, "thank_you.html")
+        else:  
+            form = ContactForm()
+        return render(request, "contact.html", {"form": form})
             
             return redirect("contact_success")
         else:
@@ -140,5 +146,4 @@ def reservations(request):
 
 def home(request):
     return render(request,"home.html")
-
     
