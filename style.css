@@ -1,38 +1,13 @@
-/* Basic reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Navigation bar container */
-nav {
-    background-color: #333;
-    padding: 12px 20px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-/* Navigation links list */
-nav ul {
-    list-style: none;
+.placeholder-lang {
+    width: 200px;
+    height: 15px;
+    background-color: #e0e0e0;
     display: flex;
-    justify-content: flex-start;
-    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    border: 2px dashed #bbb;
+    margin-bottom: 10px;
 }
-
-/* Navigation links */
-nav ul li a {
-text-decoration: none;
-color: #fff;
-font-size:16px;
-padding: 8px 12px;
-transition: background-color 0.3s ease, color 0.3s ease;
-border-radius: 4px;
-}
-
-/* Hover effect */
-nav ul li a:hover {
-    background-color: #555;
-    color: #ffeb3b;
-}
-
