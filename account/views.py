@@ -148,5 +148,9 @@ def home(request):
     return render(request,"home.html")
 
 def home_view(request):
+    context = {
+        "welcome_message": "welcome to Our Restaurant! We're happy to serve you."
+    }
+    return render(request, "home.html", context)
     return render(request, "cart.html")
     
