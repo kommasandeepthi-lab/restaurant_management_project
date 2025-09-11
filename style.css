@@ -1,30 +1,38 @@
-/* CTA Section */
-.cta {
-    max-width: 960px;
-    margin: 3rem auto;
-    padding: 2.25rem 1.25rem;
-    text-align: center;
-    background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.cta__title {
-    font-size: 2rem;
-    margin: 0 0 0.5rem;
-    line-height: 1.2;
-    letter-spacing: 0.2px;
+/* Navigation bar container */
+nav {
+    background-color: #333;
+    padding: 12px 20px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.cta__subtitle {
-    color: #555;
-    margin: 0 0 1.25rem;
-}
-
-.cta__buttons {
+/* Navigation links list */
+nav ul {
+    list-style: none;
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    justify-content: center;
-    margin-top: 00.75rem;
+    justify-content: flex-start;
+    gap: 20px;
 }
+
+/* Navigation links */
+nav ul li a {
+text-decoration: none;
+color: #fff;
+font-size:16px;
+padding: 8px 12px;
+transition: background-color 0.3s ease, color 0.3s ease;
+border-radius: 4px;
+}
+
+/* Hover effect */
+nav ul li a:hover {
+    background-color: #555;
+    color: #ffeb3b;
+}
+
