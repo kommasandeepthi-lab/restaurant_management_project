@@ -11,6 +11,26 @@
     <p><strong>Address:</strong> {{ restaurant.address }}</p>
 </body>
 <style>
+    .cart-btn {
+        display: intlin-block;
+        background-color: #4CAAF50;
+        color: white;
+        padding: 12px 24px;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Our Store</h1>
+
+    <!-- Cart Button -->
+    <a href="{% url 'cart' %}" class="cart-btn">View Cart</a>
+</body>
     .btn {
        display: inline-block;
        padding: 10px 20px;
