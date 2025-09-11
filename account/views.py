@@ -14,7 +14,7 @@ def homepage_view(request):
     return render(request, 'home.html', {'restaurant_name': restaurant.name})
 
 def about_view(request):
-    return render(request, 'about.html')
+    return render(request, 'about.html')   
 
 def homepage(request):
     restaurant = Restaurant.objects.first()
