@@ -23,6 +23,7 @@ urlpatterns = [
     path("reservations/", views.reservations, name="reservations"),
     path("sitemap.xml", views.sitemap, name="sitemap"),
     path("", views.home, name="home"),
+    path("", views.home_view, name="home"),
 ]
 
 if settings.DEBUG:
