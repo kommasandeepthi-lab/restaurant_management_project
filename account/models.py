@@ -38,18 +38,17 @@ class Chef(models.Model):
     def __str__(self):
         return self.name
 
-class RestaurantInfo(models.Model)
-    address = models.CharField(max_length=150, default="My Restaurant")
-    address = models.TextField()
-    phone = models.CharField(max_length=20, blank=True, null=True)
-    email = models.EmailField(blank=True, null=True)
+class RestaurantContact(models.Model)
+    address = models.CharField(help_text="Full address of the restaurant")
+    phone_number = models.CharField(max_length=15, help_text="Restaurant contact number")
+    email = models.EmailField(unique=True, help_text="Official email address")
 
     class Meta:
-        verbose_name = "Restaurant Information"
-        verbose_name_plural = "Restaurant Information"
+        verbose_name = "Restaurant Contact"
+        verbose_name_plural = "Restaurant Contacts"
 
     def __str__(self):
-        return self.name
+        return f"{self.address} | {self.phone_number} | {self.email}"
 
 class Loction(models.Model)
 address = model.CharField(max_length=100)
