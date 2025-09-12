@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurant Homepage</title>
+</head>
+<body>
+    <h1>Welcome to Our Restaurant</h1>
+
+    {% if contact %}
+    <p><strong>Address:</strong> {{ contact.address }}</p>
+    {% else %}
+    <p>Restaurant address not available yet.</p>
+    {% endif %}
+</body>
+</html>
