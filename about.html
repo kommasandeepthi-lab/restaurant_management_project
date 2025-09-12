@@ -7,9 +7,10 @@
     <style>
         body {
            font-family: Arial, sans-serif;
-           background: #f4f6f9;
-           margin: 0;
-           padding: 0;
+           line-height: 1.6;
+           margin: 40px;
+           background-color: #fdfdfd;
+           color: #333;
         }
         .about-container {
            max-width: 800px;
@@ -20,17 +21,32 @@
            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         h1{ 
-           color: #0077cc;
-           margin-bottom: 20px;
-           text-align: justify;
+           color: #444;
+        }
+        .container {
+           max-width: 800px;
+           margin: auto;
         }
     </style>
 </head>
 <body>
-    <div class="about-container">
+    <div class="container">
         {% if restaurant %}
         <h1>About {{ restaurant.name }}</h1>
         <p>{{ restaurant.description }}</p>
+        <h1>About Our Restaurant</h1>
+        <p>
+            Welcome to Our Restaurant
+        </p>
+        <p>
+            Foodie Restaurant
+        </p>
+        <p>
+            More details will be added soon.
+        </p>
+    </div>
+</body>
+</html>
 
         <!-- templates/about.html>
 
