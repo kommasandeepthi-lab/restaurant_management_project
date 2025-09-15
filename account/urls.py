@@ -24,6 +24,7 @@ urlpatterns = [
     path("sitemap.xml", views.sitemap, name="sitemap"),
     path("", views.home, name="home"),
     path("", views.home_view, name="home"),
+    path('menu-categories/', MenuCategoryListView.as_view(), name='menu-category-list'),
 ]
 
 if settings.DEBUG:
