@@ -85,3 +85,12 @@ class MenuItem(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.price}
+
+class OrderStatus(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+
+    class Meta:
+        verbose_name_plural = "Order Statuses"
+
+    def __str__(self):
+        return self.name
