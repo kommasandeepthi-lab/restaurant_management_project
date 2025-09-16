@@ -109,3 +109,12 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Order #{self.id} - {self.customer_name}"
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="items")
+    product_name = models.CharField(max_length=200)
+    quantity = models.PositiveIntegerField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f"{self.product_name} - {self.quantity}"
