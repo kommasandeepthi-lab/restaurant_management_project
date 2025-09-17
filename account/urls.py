@@ -25,6 +25,7 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("", views.home_view, name="home"),
     path('menu-categories/', MenuCategoryListView.as_view(), name='menu-category-list'),
+    path('items-by-category/', MenuItemsByCategoryView.as_view(), name='items-by-category'),
 ]
 
 if settings.DEBUG:
