@@ -1,20 +1,17 @@
-from rest_framework import viewsets, status
-from rest_framework.response import Response
-from rest_framework.permissions import IsAdminUser
+from rest_framework import generics
+from rest_framework.pagination import PageNumberPagination
 from .models import MenuItem
 from .serializers import MenuItemSerializer
 
-class MenuItemViewSet(viewsets, ViewSet):
-    permission_classes = [IsAdminUser]
+class MenuItemPagination(PageNumberPagination):
+    page_size = 5
+    page_size_query_param = 'page_size'
+    max_page_size = 50
 
-    def update(self, request, pk=None):
-        try:
-            item = MenuItem.objects.get(pk=pk)
-        except MenuItem.DoesNotExist:
-            return Response({"error": "Menu Item Not found."}, status=status.HTTP_404_NOT_FOUND)
+class MenuItemSearchView(generics.ListAPIView):
+    serializer_class = MenuItemSerializer
+    pagination_class = MenuItemPagination
 
-        serializer = MenuItemSerializer(item, data=request.data, partial=False)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+def get_queryset(self):
+    query = self.request.query_params.get('q', '')
+    return MenuItem.objects.filter(name__icontains=query).order_by('name')
