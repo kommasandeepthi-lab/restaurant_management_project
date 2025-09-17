@@ -134,3 +134,24 @@ class MenuItem(models.Model):
     def __str__(self):
         return self.name
 
+class ActiveOrderManager(models.Manager):
+    def get_active_orders(self):
+        return self.filter(status__in=['pending', 'processing'])
+
+class Order(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('processing', 'Processing'),
+        ('completed', 'Completed'),
+        ('cancelled', 'Cancelled'),
+    ]
+
+    customer_name = models.CharField(max_length=100)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    objects = ActiveOrderManager()
+
+    def __str__(self):
+        return f"Order #{self.id} - {self.customer_name} ({self.status})"
+
