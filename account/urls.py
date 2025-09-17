@@ -4,6 +4,7 @@ from django conf import settings
 from . import views
 from .views import contact_view, contact_success_view
 from django.shortcuts import render
+from .views import MenuItemSearchView
 
 urlpatterns = [
     path('', include('your_app_name.urls')),
@@ -26,6 +27,7 @@ urlpatterns = [
     path("", views.home_view, name="home"),
     path('menu-categories/', MenuCategoryListView.as_view(), name='menu-category-list'),
     path('items-by-category/', MenuItemsByCategoryView.as_view(), name='items-by-category'),
+    path('items/search/', MenuItemSearchView.as_view(), name='menu-item-search'),
 ]
 
 if settings.DEBUG:
