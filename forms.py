@@ -1,6 +1,11 @@
 from django import forms
+from utils.validation_utils import is_valid_email
 
-class ContactForm(forms.Form):
-    name = forms.Charfield(max_length=100, label="your Name")
-    email = forms.EmailField(label="your Email")
-    message = forms.Charfield(widget=forms.Textarea, label="Message")
+class RegistrationForm(forms.Form):
+    email = forms.EmailField()
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if not is_valid_email(email):
+            raise forms.ValidationError("Please provide a valid email address.")
+        return email
