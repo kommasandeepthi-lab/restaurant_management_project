@@ -155,3 +155,16 @@ class Order(models.Model):
     def __str__(self):
         return f"Order #{self.id} - {self.customer_name} ({self.status})"
 
+class Restaurant(models.Model):
+    name = models.CharField(max_length=200)
+    address = models.TextField()
+    contact_number = models.CharField(max_length=15, blank=True, null=True)
+
+    operating_days = models.CharField(
+        max_length=100,
+        help_text="Enter days restaurant is open (e.g. Mon, Tue, Wed, Thu, Fri)"
+    )
+
+    def __str__(self):
+        return self.name
+
