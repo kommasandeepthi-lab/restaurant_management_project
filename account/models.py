@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db import models
+from home.models import MenuItem
 # Create your models here.
 
 class UserProfile(models.Model):
@@ -96,6 +97,10 @@ class OrderStatus(models.Model):
         return self.name
 
 class Order(models.Model):
+    order_id = models.CharField(max_length=20, unique=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name"orders")
+    items = models.ManyToManyField(MenuItem, related_name="orders")
+    total_price = models.DecimalField(max_digits=8, decimal_places=2)
     customer_name = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_add_now=True)
 
@@ -108,7 +113,8 @@ class Order(models.Model):
     )
 
     def __str__(self):
-        return f"Order #{self.id} - {self.customer_name}"
+        return f"Order #{self.order_id}  by {self.user.username}"
+
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="items")
