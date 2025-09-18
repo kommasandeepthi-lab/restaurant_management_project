@@ -1,7 +1,10 @@
 from django.urls import path
-from . import views
+from .views import UserProfileViewSet
+
+user_profile = UserProfileViewSet.as_view({
+    'put': 'update'
+})
 
 urlpatterns = [
-    path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
-    path('feedback/', views.feedback_view, name='feedback'),
+    path("profile/update/", user_profile, name="profile-update"),
 ]
