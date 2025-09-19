@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from .models import Order
+from .models import ContactFormSubmission
 
-class OrderSerializer(serializers.ModelSerializer):
+class ContactFormSubmissionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Order
-        fields = ['id', 'user', 'created_at', 'status']
-        read_only_fields = ['id', 'user', 'created_at']
+        model = ContactFormSubmission
+        fields = ["id", "name", "email", "message", "submitted_at"]
+        read_only_fields = ["id", "submitted_at"]
