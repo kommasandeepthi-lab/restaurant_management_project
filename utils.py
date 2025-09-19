@@ -1,29 +1,12 @@
-from django.core.mail import send_mail, BadHeaderError
-from django.core.exceptions import ValidationError
-from django.core validators import validate_email
-from django.conf import settings
+import secrets
+import string
+from .models import Order
 
-def send_app_email(recipient_email: str, subject: str, message: str) -> bool:
-    try:
-        validate_email(recipient_email)
+def generate_unique_order_id(length=8):
+    alphabet = string.ascii_uppercase + string.digits
 
-        send_mail(
-            subject,
-            message,
-            settings.DEFAULT_FROM_EMAIL,
-            [recipient_email],
-            fail_silently=False,
-        )
-        return True
+    while True:
+        order_id = ''.join(secrets.cjoice(alphabet) for_in range(length))
 
-    except ValidationError:
-        print(f"Invalid email: {recipient_email}")
-        return False
-
-    except BadHeaderError:
-        print("Invalid header found.")
-        return False
-
-    except Exception as e:
-        print(f"Error sending email: {e}")
-        return False
+        if not Order.objects.filter(order_id=order_id).exists():
+            return order_id
