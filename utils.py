@@ -1,13 +1,29 @@
-import string
-from orders.models import Coupon
+from django.core.mail import send_mail, BadHeaderError
+from django.core.exceptions import ValidationError
+from django.core validators import validate_email
+from django.conf import settings
 
-def generate_coupon_code(length: int = 10)
+def send_app_email(recipient_email: str, subject: str, message: str) -> bool:
+    try:
+        validate_email(recipient_email)
 
-characters = string_uppercase + string.digits
+        send_mail(
+            subject,
+            message,
+            settings.DEFAULT_FROM_EMAIL,
+            [recipient_email],
+            fail_silently=False,
+        )
+        return True
 
-while True:
+    except ValidationError:
+        print(f"Invalid email: {recipient_email}")
+        return False
 
-    code = ''.join(choice(characters) for _ in range(length))
+    except BadHeaderError:
+        print("Invalid header found.")
+        return False
 
-    if not Coupon.objects.filter(code=code).exists():
-        return code
+    except Exception as e:
+        print(f"Error sending email: {e}")
+        return False
