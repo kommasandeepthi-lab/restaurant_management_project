@@ -1,9 +1,8 @@
 from rest_framework import serializers
-from .models import MenuItem
+from .models import Order
 
-class MenuItemSerializer(serializers.ModelSerializer):
-    category = serializers.CharField(source='category.name', read_only=True)
-
+class OrderSerializer(serializers.ModelSerializer):
     class Meta:
-        model = MenuItem
-        fields = ['id', 'name', 'description', 'price', 'category']
+        model = Order
+        fields = ['id', 'user', 'created_at', 'status']
+        read_only_fields = ['id', 'user', 'created_at']
