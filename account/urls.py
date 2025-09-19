@@ -6,6 +6,7 @@ from .views import contact_view, contact_success_view
 from django.shortcuts import render
 from .views import MenuItemSearchView
 from .views import OrderDetailView
+from .views import cancel_order
 
 urlpatterns = [
     path('', include('your_app_name.urls')),
@@ -30,6 +31,7 @@ urlpatterns = [
     path('items-by-category/', MenuItemsByCategoryView.as_view(), name='items-by-category'),
     path('items/search/', MenuItemSearchView.as_view(), name='menu-item-search'),
     path("<str:order_id>/", OrderDetailView(), name="order-detail"),
+    path("cancel/<int:order_id/", cancel_order, name="cancel-order"),
 ]
 
 if settings.DEBUG:
