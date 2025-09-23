@@ -6,7 +6,9 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(
         max_length=20,
-        choices=[
+        choices=STATUS_CHOICES,
+
+        STATUS_CHOICES=[
             ("pending", "Pending"),
             ("processing", "Processing"),
             ("completed", "Completed"),
@@ -14,6 +16,9 @@ class Order(models.Model):
         ],
         default="pending"
     )
+    
+    def __str__(self):
+        return f"Order {self.id} - {self.status}"
 
     def calculate_total(self):
         total = 0
