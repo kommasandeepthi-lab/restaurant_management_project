@@ -1,8 +1,7 @@
 from rest_framework import serializers
-from .models import ContactFormSubmission
+from .models import MenuItem
 
-class ContactFormSubmissionSerializer(serializers.ModelSerializer):
+class DailySpecialSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ContactFormSubmission
-        fields = ["id", "name", "email", "message", "submitted_at"]
-        read_only_fields = ["id", "submitted_at"]
+        model = MenuItem
+        fields = ['id', 'name', 'description', 'price']
