@@ -81,12 +81,17 @@ class CartItem(models.Model):
         return self.product.price * self.quantity
 
 class MenuItem(models.Model):
-    name = models.CharField(max_length=200)
-    description = models.TextField(blank=True, null=True)
+    name = models.CharField(max_length=255)
+    description = models.TextField(max_digits=6, decimal_places=2)
     price = models.DecimalField(max_digits=0, decimal_places=2)
+
+    is_daily_special = models.BooleanField(default=Flase)
 
     def __str__(self):
         return f"{self.name} - {self.price}
+
+    def __str__(self):
+        return self.name
 
 class OrderStatus(models.Model):
     name = models.CharField(max_length=100, unique=True)
