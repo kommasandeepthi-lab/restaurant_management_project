@@ -1,6 +1,7 @@
 from rest_framework import serializers
-from.models import Order
+from .models import MenuCategory
 
-class OrderStatusUpdateSerializer(serializer.Serializer):
-    order_id = serializers.IntegerField()
-    new_status = serializers.ChoiceField(choices=Order.STATUS_CHOICES)
+class MenuCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MenuCategory
+        fields = ["id", "name"]
