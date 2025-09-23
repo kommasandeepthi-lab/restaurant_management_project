@@ -1,31 +1,39 @@
 from django.db import models
-
-class OrderManager(models.Manager):
-    def with_status(self, status):
-        return self.filter(status=status)
-
-    def pending(self):
-        return self.filter(status="pending")
-
-    def processing(self):
-        return self.filter(status="processing")
-
-    def completed(self):
-        return self.filter(status="completed")
+from .utils import calculate_discount
 
 class Order(models.Model):
-    STATUS_CHOICES = [
-        ("pending", "Pending"),
-        ("processing", "Processing"),
-        ("completed", "Completed"),
-        ("cancelled", "Cancelled"),
-    ]
-
-    customer = models.CharField(max_length=255)
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="pending")
+    user = models.ForeignKey("auth.User", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(
+        max_length=20,
+        choices=[
+            ("pending", "Pending"),
+            ("processing", "Processing"),
+            ("completed", "Completed"),
+            ("cancelled", "Cancelled"),
+        ],
+        default="pending"
+    )
 
-    objects = OrderManager()
+    def calculate_total(self):
+        total = 0
+        items = self.items.all()
+
+        for item in items:
+            base_cost = item.product.price * item.quantity
+            discount_cost = calculate_discount(base_cost, item.product, item.quantity)
+            total += discount_cost
+
+        return total
+
+class Product(models.Model):
+    name = models.CharField(max_length=255)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, related_name="items", on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
 
     def __str__(self):
-        return f"Order {self.id} - {self.status}"
+        return f"{self.quantity} - {self.product.name}"
