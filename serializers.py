@@ -1,13 +1,7 @@
 from rest_framework import serializers
-from .models import UserReview
+from .models import MenuCategory
 
-class UserReviewSerializer(serializers.ModelSerializer):
+class MenuCategorySerializer(serializers.ModelSerializer):
     class Meta:
-        model = UserReview
-        fields = ["id". "user", "menu_item", "rating", "comment", "created_at"]
-        read_only_fields = ["id", "user", "created_at"]
-
-    def validate_rating(self, value):
-        if not(1 <= value <= 5):
-            raise serializers.ValidationError("Rating must be between 1 and 5.")
-        return value
+        model = MenuCategory
+        fields = ["id", "name", "description"]
