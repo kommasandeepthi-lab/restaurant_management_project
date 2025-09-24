@@ -1,12 +1,26 @@
-import secrets
-import string
+import logging
+from django.core.exceptions import ObjectDoesNotExist
 from .models import Order
 
-def generate_unique_order_id(length=8):
-    alphabet = string.ascii_uppercase + string.digits
+logger = logging.getLogger(__name__)
 
-    while True:
-        order_id = ''.join(secrets.cjoice(alphabet) for_in range(length))
+def update_order_status(order_id, new_status):
 
-        if not Order.objects.filter(order_id=order_id).exists():
-            return order_id
+    try:
+        order = Order.objects.get(id=order_id)
+        old_status = order.new_status
+        order.status = new_status
+        order.save()
+
+        logger.info(
+            f"Order {order_id} status updated from '{old_status}' to '{new_status}'."
+        )
+
+        return order
+
+    except ObjectDoesNotExist:
+        logger.error(f"Order with ID {order_id} not found.")
+
+    except Exception as e:
+        logger.error(f"Error updating order {order_id} status: {str(e)}")
+        return None
