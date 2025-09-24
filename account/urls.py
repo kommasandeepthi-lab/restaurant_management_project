@@ -7,6 +7,7 @@ from django.shortcuts import render
 from .views import MenuItemSearchView
 from .views import OrderDetailView
 from .views import cancel_order
+from .views import get_order_status
 
 urlpatterns = [
     path('', include('your_app_name.urls')),
@@ -32,6 +33,7 @@ urlpatterns = [
     path('items/search/', MenuItemSearchView.as_view(), name='menu-item-search'),
     path("<str:order_id>/", OrderDetailView(), name="order-detail"),
     path("cancel/<int:order_id/", cancel_order, name="cancel-order"),
+    path("orders/<int:order_id>/status/", get_order_status, name="order-status"),
 ]
 
 if settings.DEBUG:
