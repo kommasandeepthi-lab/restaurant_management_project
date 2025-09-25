@@ -8,6 +8,7 @@ from .views import MenuItemSearchView
 from .views import OrderDetailView
 from .views import cancel_order
 from .views import get_order_status
+from .views import UpdateMenuItemAvailabilityView
 
 urlpatterns = [
     path('', include('your_app_name.urls')),
@@ -34,6 +35,7 @@ urlpatterns = [
     path("<str:order_id>/", OrderDetailView(), name="order-detail"),
     path("cancel/<int:order_id/", cancel_order, name="cancel-order"),
     path("orders/<int:order_id>/status/", get_order_status, name="order-status"),
+    path('menu/<int:pk>/availability/', UpdateMenuItemAvailabilityView.as_view(), name='update-menu-availability'),
 ]
 
 if settings.DEBUG:
