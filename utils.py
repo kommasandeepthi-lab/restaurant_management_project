@@ -1,26 +1,20 @@
-import logging
-from django.core.exceptions import ObjectDoesNotExist
-from .models import Order
+from typing List, Dict, Union
 
-logger = logging.getLogger(__name__)
+def calculate_order_total(order_items: List[Dict[str, Union[int, float]]]) -> float:
 
-def update_order_status(order_id, new_status):
+    if not order_items:
+        return 0.0
 
-    try:
-        order = Order.objects.get(id=order_id)
-        old_status = order.new_status
-        order.status = new_status
-        order.save()
+    total_cost = 0.0
 
-        logger.info(
-            f"Order {order_id} status updated from '{old_status}' to '{new_status}'."
-        )
+    for item in order_items:
 
-        return order
+        quantity = int(item.get("quantity", 0))
+        price = float(item.get("price", 0.0))
 
-    except ObjectDoesNotExist:
-        logger.error(f"Order with ID {order_id} not found.")
+        if quantity < 0 or price < 0:
+            continue
 
-    except Exception as e:
-        logger.error(f"Error updating order {order_id} status: {str(e)}")
-        return None
+        total_cost += quantity * price
+
+    return round(total_cost, 2)
