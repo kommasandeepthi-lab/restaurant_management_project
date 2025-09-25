@@ -10,6 +10,7 @@ from .views import cancel_order
 from .views import get_order_status
 from .views import UpdateMenuItemAvailabilityView
 from .views import RestaurantInfoView
+from .views import MenuCategoryListView
 
 urlpatterns = [
     path('', include('your_app_name.urls')),
@@ -38,6 +39,7 @@ urlpatterns = [
     path("orders/<int:order_id>/status/", get_order_status, name="order-status"),
     path('menu/<int:pk>/availability/', UpdateMenuItemAvailabilityView.as_view(), name='update-menu-availability'),
     path('restaurant/info/', RestaurantInfoView.as_view(), name='restaurant-info'),
+    path('menu/categories/', MenuCategoryListView.as_view(), name='menu-categories'),
 ]
 
 if settings.DEBUG:
