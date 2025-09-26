@@ -11,6 +11,7 @@ from .views import get_order_status
 from .views import UpdateMenuItemAvailabilityView
 from .views import RestaurantInfoView
 from .views import MenuCategoryListView
+from .views import CreateUserReviewView
 
 urlpatterns = [
     path('', include('your_app_name.urls')),
@@ -40,6 +41,7 @@ urlpatterns = [
     path('menu/<int:pk>/availability/', UpdateMenuItemAvailabilityView.as_view(), name='update-menu-availability'),
     path('restaurant/info/', RestaurantInfoView.as_view(), name='restaurant-info'),
     path('menu/categories/', MenuCategoryListView.as_view(), name='menu-categories'),
+    path('api/reviews/', CreateUserReviewView.as_view(), name='create-review'),
 ]
 
 if settings.DEBUG:
