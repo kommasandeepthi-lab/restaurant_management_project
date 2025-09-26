@@ -1,20 +1,8 @@
-from typing List, Dict, Union
+import re
+def is_valid_email(email: str) -> bool:
 
-def calculate_order_total(order_items: List[Dict[str, Union[int, float]]]) -> float:
+    if not isinstance(email, str):
+        return False
 
-    if not order_items:
-        return 0.0
-
-    total_cost = 0.0
-
-    for item in order_items:
-
-        quantity = int(item.get("quantity", 0))
-        price = float(item.get("price", 0.0))
-
-        if quantity < 0 or price < 0:
-            continue
-
-        total_cost += quantity * price
-
-    return round(total_cost, 2)
+    pattern = r[a-zA-z09_]
+    return bool(re,match(pattern, email))
