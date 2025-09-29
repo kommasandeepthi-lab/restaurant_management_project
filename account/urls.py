@@ -12,6 +12,7 @@ from .views import UpdateMenuItemAvailabilityView
 from .views import RestaurantInfoView
 from .views import MenuCategoryListView
 from .views import CreateUserReviewView
+from .views import search_menu_items
 
 urlpatterns = [
     path('', include('your_app_name.urls')),
@@ -42,6 +43,7 @@ urlpatterns = [
     path('restaurant/info/', RestaurantInfoView.as_view(), name='restaurant-info'),
     path('menu/categories/', MenuCategoryListView.as_view(), name='menu-categories'),
     path('api/reviews/', CreateUserReviewView.as_view(), name='create-review'),
+    path('menu/search/', search_menu_items, name='menu-search'),
 ]
 
 if settings.DEBUG:
