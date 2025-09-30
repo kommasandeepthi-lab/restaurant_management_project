@@ -61,7 +61,10 @@ address = model.CharField(max_length=100)
 class Restaurant(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
-    address = models.CharField(max_length=255, blank=True, null=True)
+    address = models.CharField(blank=True, null=True)
+
+    def get_total_menu_items(self):
+        return MenuItem.objects.count()
 
     def __str__(self):
         return self.name
@@ -81,9 +84,10 @@ class CartItem(models.Model):
         return self.product.price * self.quantity
 
 class MenuItem(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.TextField(max_digits=6, decimal_places=2)
+    name = models.CharField(max_length=200)
+    description = models.TextField(max_digits=8, decimal_places=2)
     price = models.DecimalField(max_digits=0, decimal_places=2)
+    available = models.BooleanField(default=True)
 
     is_daily_special = models.BooleanField(default=Flase)
 
