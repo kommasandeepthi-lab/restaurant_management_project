@@ -16,6 +16,7 @@ from .views import search_menu_items
 from .views import RestaurantReviewListView
 from .views import OrderStatusView
 from .views import OpeningHourListView
+from .views import CouponValidationView
 
 urlpatterns = [
     path('', include('your_app_name.urls')),
@@ -54,6 +55,7 @@ urlpatterns = [
     ),
     path("orders/<str:unique_id>/status/", OrderStatusView.as_view(), name="order-status"),
     path("opening-hours/", OpeningHourListView.as_view(), name="opening-hours"),
+    path("coupon/validate/", CouponValidationView.as_view, name="coupon-validate"),
 ]
 
 if settings.DEBUG:
