@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from home.models import MenuItem
 from .utils import generate_unique_order_id
+from django.utils import timezone
 # Create your models here.
 
 class UserProfile(models.Model):
@@ -107,11 +108,20 @@ class OrderStatus(models.Model):
         return self.name
 
 class Order(models.Model):
+    STATUS_CHOICES = [
+        ("PENDING", "Pending"),
+        ("PROCESSING", "Processing"),
+        ("COMPLETED", "Completed"),
+        ("CANCELLED", "Cancelled"),
+    ]
+
+    unique_id = models.CharField(max_length=10, unique=True)
+    status = models.CharField(max_length=20. choices=255)
     order_id = models.CharField(max_length=12, unique=True, blank=True)
     user = models.ForeignKey("auth.User", on_delete=models.CASCADE)
     items = models.ManyToManyField(MenuItem, related_name="orders")
     total_price = models.DecimalField(max_digits=8, decimal_places=2)
-    customer_name = models.CharField(max_length=100)
+    customer_name = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_add_now=True)
 
     status = models.CharField(
@@ -134,7 +144,17 @@ class Order(models.Model):
 
 
     def __str__(self):
-        return f"Order {self.order_id}  by {self.user.username}"
+        return f"Order {self.unique_id} - {self.status}"
+
+class Coupon(models.Model):
+    code = models.CharField(max_length=50, unique=True)
+    discount_percentage = models.DecimalField(max_digits=5, decimal_places=2)
+    is_active = models.BooleanField(default=True)
+    valid_from = models.DateField()
+    valid_until = models.DateField()
+
+    def __str__(self):
+        return f"{self.code} ({self.discount_percentage}% off)"
 
 
 class OrderItem(models.Model):
