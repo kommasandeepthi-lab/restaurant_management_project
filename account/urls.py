@@ -1,7 +1,7 @@
 from django.urls import path, include
 from django.conf.urls.static import static
 from django conf import settings
-from . import views
+from . import views      
 from .views import contact_view, contact_success_view
 from django.shortcuts import render
 from .views import MenuItemSearchView
@@ -13,6 +13,7 @@ from .views import RestaurantInfoView
 from .views import MenuCategoryListView
 from .views import CreateUserReviewView
 from .views import search_menu_items
+from .views import RestaurantReviewListView
 
 urlpatterns = [
     path('', include('your_app_name.urls')),
@@ -44,6 +45,11 @@ urlpatterns = [
     path('menu/categories/', MenuCategoryListView.as_view(), name='menu-categories'),
     path('api/reviews/', CreateUserReviewView.as_view(), name='create-review'),
     path('menu/search/', search_menu_items, name='menu-search'),
+    path(
+        "restaurants/<int:restaurant_id>/reviews/",
+        RestaurantReviewListView.as_view(),
+        name="restaurant-reviews",
+    ),
 ]
 
 if settings.DEBUG:
