@@ -15,6 +15,7 @@ from .views import CreateUserReviewView
 from .views import search_menu_items
 from .views import RestaurantReviewListView
 from .views import OrderStatusView
+from .views import OpeningHourListView
 
 urlpatterns = [
     path('', include('your_app_name.urls')),
@@ -52,6 +53,7 @@ urlpatterns = [
         name="restaurant-reviews",
     ),
     path("orders/<str:unique_id>/status/", OrderStatusView.as_view(), name="order-status"),
+    path("opening-hours/", OpeningHourListView.as_view(), name="opening-hours"),
 ]
 
 if settings.DEBUG:
