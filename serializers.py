@@ -1,9 +1,7 @@
 from rest_framework import serializers
-from .models import Review
+from .models import Order
 
-class ReviewSerializer(serializers.ModelSerializer):
-    user = serializers.StringRelatedField()
-
+class OrderStatusSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Review
-        fields = ["id", "user", "rating", 'comment', "created_at"]
+        model = Order
+        fields = ["unique_id", "status"]
