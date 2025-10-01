@@ -1,18 +1,17 @@
-def calculate_discount(original_price, discount_percentage):
-    try:
-        original_price = float(original_price)
-        discount_percentage = float(discount_percentage)
+import datetime
 
-        if original_price < 0:
-            raise ValueError("Original price cannot be negative.")
-        if not(0 <= discount_percentage <= 100):
-            raise ValueError("Discount percentage must be between 0 and 100.")
+def is_restaurant_open():
 
-        discount_amount = (discount_percentage / 100) * original_price
-        discount_price = original_price - discount_amount
+    now = datetime.now()
+    current_day = now.weekday()
+    current_time = now.time()
 
-        return round(discounted_price, 2)
+    weekday_open = datetime.time(9, 0)
+    weekday_close = datetime.time(22, 0)
+    weekday_open = datetime.time(10, 0)
+    weekday_close = datetime.time(23, 0)
 
-    except (ValueError, TypeError) as e:
-        print(f"Error calculating discount: {e}")
-        return None
+    if current_day < 5:
+        return weekday_open <= current_time <= weekday_close
+    else:
+        return weekday_open <= current_time <= weekend_close
