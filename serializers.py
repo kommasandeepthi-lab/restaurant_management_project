@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import Table
+from .models import MenuItem
 
-class TableSerializer(serializers.ModelSerializer):
+class MenuItemSerializer(serializers.ModdelSerializer):
     class Meta:
-        model = Table
-        fields = ['table_number', 'capacity', 'is_available']
+        model = MenuItem
+        fields = ['id', 'name', 'description', 'price', 'image', 'is_available']
