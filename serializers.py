@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import OpeningHour
+from .models import Table
 
-class OpeningHourSerializer(serializers.ModelSerializer):
+class TableSerializer(serializers.ModelSerializer):
     class Meta:
-        model = OpeningHour
-        fields = ["day", "opening_time", "closing_time"]
+        model = Table
+        fields = ['table_number', 'capacity', 'is_available']
