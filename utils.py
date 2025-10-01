@@ -2,7 +2,7 @@ import datetime
 
 def is_restaurant_open():
 
-    now = datetime.now()
+    now = datetime.datetime.now()
     current_day = now.weekday()
     current_time = now.time()
 
