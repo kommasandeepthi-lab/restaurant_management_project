@@ -1,7 +1,14 @@
-from django.db .models import Sum
-from .models import Order
+def calculate_discount_amount(order_total, discount_percentage):
 
-def get_daily_total(data):
+    try:
+        order_total = float(order_total)
+        discount_percentage = float(discount_percentage)
+    except (TypeError, ValueError):
+        raise ValueError("Both order_total and discount_percentage must be numeric values.")
 
-    result = Order.objects.filter(created_at__date=date).aggregate(total_sum=Sum('total_price'))
-    return result['total_sum'] or 0
+    if order_total < 0:
+        raise ValueError("Order total cannot be negative.")
+    if discount_percentage < 0 or discount_percentage > 100:
+        raise ValueError("Discount percentage must be between 0 and 100.")
+
+    return order_total * (discount_percentage / 100.0)
