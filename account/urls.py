@@ -18,6 +18,7 @@ from .views import OrderStatusView
 from .views import OpeningHourListView
 from .views import CouponValidationView
 from .views import AvailableTablesAPIView, TableDetailAPIView
+from .views import MenuItemPriceRangeView
 
 urlpatterns = [
     path('', include('your_app_name.urls')),
@@ -59,6 +60,7 @@ urlpatterns = [
     path("coupon/validate/", CouponValidationView.as_view, name="coupon-validate"),
     path('api/tables/available/', AvailableTablesAPIView.as_view(), name='available-tables-api'),
     path('api/tables/<int:pk>/', TableDetailAPIView.as_view(), name='table-detail-api'),
+    path("menu-items/price-range/", MenuItemPriceRangeView.as_view(), name="menu-items-price-range"),
 ]
 
 if settings.DEBUG:
