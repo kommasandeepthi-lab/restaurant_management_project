@@ -1,18 +1,19 @@
 from django.db import models
 
-class MenuItem(models.Model):
-    name = models.CharField(max_length=255)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    discount_percentage = models.DecimalField(
-        max_digits=5, decimal_places=2, default=0.0
-        help_text="Discount percentageto apply to the item price"
-    )
-    def __str__(self):
-        return self.name
-    
-    def final_price(self) -> float:
+class Order(models.Model):
+    user = models.ForeignKey("auth.User", on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
 
-        if self.discount_percentage > 0:
-            discount_amount = (self.discount_percentage / 100) * float(self.price)
-            return round(float(self.price) - discount_amount, 2)
-        return float(self.price)
+    def __str__(self):
+        return f"Order #{self.id} by {self.user}"
+
+    def get_total_item_count(self):
+        return sum(item.quantity for item in self.items.all())
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, related_name="items", on_delete=models.CASCADE)
+    product = models.ForeignKey("Product", on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.quantity} * {self.product.name}"
