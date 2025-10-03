@@ -21,6 +21,7 @@ from .views import AvailableTablesAPIView, TableDetailAPIView
 from .views import MenuItemPriceRangeView
 from .views import MenuItemListView
 from .views import RestaurantHoursView
+from .views import ReviewListView
 
 urlpatterns = [
     path('', include('your_app_name.urls')),
@@ -65,6 +66,7 @@ urlpatterns = [
     path("menu-items/price-range/", MenuItemPriceRangeView.as_view(), name="menu-items-price-range"),
     path("menu-items/", MenuItemListView.as_view(), name="menu-items-list"),
     path("restaurant/hours/", RestaurantHoursView.as_view(), name="restaurant-hours")
+    path("api/reviews/", ReviewListView.as_view(), name="review-list"),
 ]
 
 if settings.DEBUG:
