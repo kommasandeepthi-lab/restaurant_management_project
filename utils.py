@@ -1,14 +1,11 @@
-def calculate_discount_amount(order_total, discount_percentage):
-
+def calculate_average_rating(reviews_queryset):
     try:
-        order_total = float(order_total)
-        discount_percentage = float(discount_percentage)
-    except (TypeError, ValueError):
-        raise ValueError("Both order_total and discount_percentage must be numeric values.")
+        total_reviews = reviews_queryset.count()
+        if total_reviews == 0:
+            return 0.0
 
-    if order_total < 0:
-        raise ValueError("Order total cannot be negative.")
-    if discount_percentage < 0 or discount_percentage > 100:
-        raise ValueError("Discount percentage must be between 0 and 100.")
+        total_rating = sum(review.rating for review in reviews_queryset)
+        return round(total_rating / total_reviews, 2)
 
-    return order_total * (discount_percentage / 100.0)
+    except Exception:
+        return 0.0
