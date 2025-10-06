@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import Review
+from .models import Order
 
-class ReviewSerializer(serializers.ModelSerializer):
+class OrderHistorySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Review
-        fields = ["id", "text", "rating", "created_at"]
+        model = Order
+        fields = ['id', 'date', 'items', 'total_amount', 'status']
