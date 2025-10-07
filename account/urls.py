@@ -24,6 +24,7 @@ from .views import RestaurantHoursView
 from .views import ReviewListView
 from .views import UpdateMenuItemAvailabilityView
 from .views import FAQListView
+from .views import AvailableMenuItemsView
 
 urlpatterns = [
     path('', include('your_app_name.urls')),
@@ -71,6 +72,7 @@ urlpatterns = [
     path("api/reviews/", ReviewListView.as_view(), name="review-list"),
     path("api/menu-items/<int:pk>/availability/", MenuItemAvailabilityView.as_view(), name="menu-item-availability"),
     path('faqs/', FAQListView.as_view(), name='faq-list'),
+    path('menu-items/', AvailableMenuItemsView(), name='available-menu-items'),
 ]
 
 if settings.DEBUG:
