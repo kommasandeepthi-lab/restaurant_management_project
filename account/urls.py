@@ -25,6 +25,7 @@ from .views import ReviewListView
 from .views import UpdateMenuItemAvailabilityView
 from .views import FAQListView
 from .views import AvailableMenuItemsView
+from .views import OrderStatusUpdateView
 
 urlpatterns = [
     path('', include('your_app_name.urls')),
@@ -73,6 +74,7 @@ urlpatterns = [
     path("api/menu-items/<int:pk>/availability/", MenuItemAvailabilityView.as_view(), name="menu-item-availability"),
     path('faqs/', FAQListView.as_view(), name='faq-list'),
     path('menu-items/', AvailableMenuItemsView(), name='available-menu-items'),
+    path('orders/<int:pk>/update-status/', OrderStatusUpdateView.as_view(), name='update-order-status'),
 ]
 
 if settings.DEBUG:
