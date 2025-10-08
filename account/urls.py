@@ -28,6 +28,7 @@ from .views import AvailableMenuItemsView
 from .views import OrderStatusUpdateView
 from home.views import AvailableMenuItemCountView
 from .views import OrderSummaryView
+from .views import ReviewListView
 
 urlpatterns = [
     path('', include('your_app_name.urls')),
@@ -79,6 +80,7 @@ urlpatterns = [
     path('orders/<int:pk>/update-status/', OrderStatusUpdateView.as_view(), name='update-order-status'),
     path('menu-items/count/', AvailableMenuItemCountView.as_view(), name='available-menu-item-count'),
     path('orders/<int:order_id>/summary/', OrderSummaryView.as_view(), name='order-summary'),
+    path('reviews/', ReviewListView.as_view(), name='review-list'),
 ]
 
 if settings.DEBUG:
