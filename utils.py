@@ -1,27 +1,22 @@
-import re
-
-def format_phone_number(phone_number: str) -> str:
-    
+def get_average_rating(reviews_queryset):
     try:
-        if not isinstance(phone_number, str):
-            raise ValueError("Phone number must be a strong.")
+        if not reviews_queryset.exists():
+            return 0.0
 
-        digits = re.sub(r'\D', '', phone_number)
+        total_rating = 0
+        total_reviews = 0
 
-        if not digits:
-            raise ValueError("Phone number contains no digits.")
+        for review in reviews_queryset:
+            rating = getattr(review, "rating", None)
+            if rating is not None:
+                total_rating += rating
+                total_reviews += 1
 
-        if len(digits) == 10:
-            formatted = f"({digits[:3]}) {digits[3:6]}-{digits[6:]}"
-        elif len(digits) == 11 and digits.startswith('1'):
+            if total_reviews == 0:
+                return 0.0
 
-            formatted = f"+1 ( ({digits[1:4]}) {digits[4:7]}-{digits[7:]}"
-        elif len(digits) == 12 and digits.startswith('91'):
-            formatted = f"+91 {digits[2:7]}-{digits[7:]}"
-        else:
-            formatted = f"+{digits}"
+            average_rating = total_rating / total_reviews
+            return round(float(average_rating), 2)
 
-        return formatted
-
-    except Exception as e:
-        return f"Invalid phone number: {str(e)}"
+        except Exception:
+            return 0.0
