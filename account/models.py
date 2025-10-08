@@ -93,6 +93,7 @@ class MenuItem(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     category = models.ForeignKey(MenuCategory, on_delete=models.CASCADE, related_name="items")
     cuisine_type = models.CharField(max_length=100, blank=True)
+    image = models.ImageField(upload_to='menu_images/', blank=True, null=True)
     is_available = models.BooleanField(default=True)
 
     is_daily_special = models.BooleanField(default=Flase)
