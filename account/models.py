@@ -92,7 +92,7 @@ class MenuItem(models.Model):
     description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     category = models.ForeignKey(MenuCategory, on_delete=models.CASCADE, related_name="items")
-    cuisine_type = models.CharField(max_length=100, blank=True)
+    cuisine = models.CharField(max_length=50)
     image = models.ImageField(upload_to='menu_images/', blank=True, null=True)
     is_available = models.BooleanField(default=True)
 
@@ -103,6 +103,9 @@ class MenuItem(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_items_by_cuisine(cls, cuisine_type):
+        return cls.objects.filer(cuisine__iexact=cuisine_type)
 
     @classmethod
     def filter_by_cuisine(cls, cuisine_type):
