@@ -1,10 +1,8 @@
 from django.urls import path
-from .views import UserProfileViewSet
+from rest_framework.routers import DefaultRouter
+from .views import MenuCategoryViewSet
 
-user_profile = UserProfileViewSet.as_view({
-    'put': 'update'
-})
+router = DefaultRouter()
+router.register(r'categories', MenuCategoryViewSet, basename='categories')
 
-urlpatterns = [
-    path("profile/update/", user_profile, name="profile-update"),
-]
+urlpatterns = router.urls
