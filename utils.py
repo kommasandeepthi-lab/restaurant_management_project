@@ -1,22 +1,16 @@
-def get_average_rating(reviews_queryset):
+def calculate_discount(price, discount_percentage):
     try:
-        if not reviews_queryset.exists():
-            return 0.0
+        price = float(price)
+        discount_percentage = float(discount_percentage)
 
-        total_rating = 0
-        total_reviews = 0
+        if price < 0:
+            raise ValueError("Price cannot be negative.")
+        if not (0 <= discount_percentage <= 100):
+            raise ValueError("Discount percentage must be between 0 and 100.")
 
-        for review in reviews_queryset:
-            rating = getattr(review, "rating", None)
-            if rating is not None:
-                total_rating += rating
-                total_reviews += 1
+        discount_price = price - (price * (discount_percentage / 100))
+        return round(discounted_price, 2)
 
-            if total_reviews == 0:
-                return 0.0
-
-            average_rating = total_rating / total_reviews
-            return round(float(average_rating), 2)
-
-        except Exception:
-            return 0.0
+    except (TypeError, ValueError) as e:
+        print(f"Error calculating discount: {e}")
+        return None
