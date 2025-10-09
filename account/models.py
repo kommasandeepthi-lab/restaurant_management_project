@@ -41,6 +41,14 @@ class Chef(models.Model):
     def __str__(self):
         return self.name
 
+class Table(models.Model):
+    table_number = models.PositiveIntegerField(unique=True)
+    capacity = models.PositiveIntegerField()
+    is_available = models.BooleanField(Default=True)
+
+    def __str__(self):
+        return f"Table {self.table_number} (Capacity: {self.capacity})"
+
 class RestaurantContact(models.Model)
     address = models.CharField(help_text="Full address of the restaurant")
     phone_number = models.CharField(max_length=15, help_text="Restaurant contact number")
