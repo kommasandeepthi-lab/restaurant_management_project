@@ -92,14 +92,20 @@ class CartItem(models.Model):
     def get_total(self):
         return self.product.price * self.quantity
 
-    class MenuCategory(models.Model):
+class MenuCategory(models.Model):
         name = models.CharField(max_length=100, unique=True)
 
+        class Meta:
+            verbose_name_plural = "Menu Categories"
+
+        def __str__(self):
+            return self.name
+
 class MenuItem(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=150)
     description = models.TextField(blank=True)
-    price = models.DecimalField(max_digits=8, decimal_places=2)
-    category = models.ForeignKey(MenuCategory, on_delete=models.CASCADE, related_name="items")
+    price = models.DecimalField(max_digits=7, decimal_places=2)
+    category = models.ForeignKey(MenuCategory, on_delete=models.CASCADE, related_name='items')
     cuisine = models.CharField(max_length=50)
     image = models.ImageField(upload_to='menu_images/', blank=True, null=True)
     is_available = models.BooleanField(default=True)
@@ -107,7 +113,7 @@ class MenuItem(models.Model):
     is_daily_special = models.BooleanField(default=Flase)
 
     def __str__(self):
-        return f"{self.name} - {self.price}
+        return f"{self.name} - {self.price}"
 
     def __str__(self):
         return self.name
