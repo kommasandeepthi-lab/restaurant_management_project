@@ -110,11 +110,15 @@ class MenuItem(models.Model):
     cuisine = models.CharField(max_length=50)
     image = models.ImageField(upload_to='menu_images/', blank=True, null=True)
     is_available = models.BooleanField(default=True)
+    allergens = models.TextField(blank=True, null=True, help_text="List allergens (e.g. gluten, nuts, dairy)")
 
     is_daily_special = models.BooleanField(default=Flase)
 
     def __str__(self):
-        return f"{self.name} - {self.price}"
+        base = f"{self.name} - {self.price}"
+        if self.allergens:
+            return f"{base} (Allergens: {self.allergens})"
+        return base
 
     def __str__(self):
         return self.name
