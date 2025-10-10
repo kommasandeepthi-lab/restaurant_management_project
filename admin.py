@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import TodaySpecial
+from .models import Table
 
-admin.site.register(TodaySpecial)
-admin.site.register(OpeningHour)
+@admin.register(Table)
+class TableAdmin(admin.ModelAdmin):
+    list_display = ('id', 'table_number', 'capacity', 'is_available')
+    search_fields = ('table_number',)
+    list_filter = ('is_available',)
