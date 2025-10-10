@@ -93,6 +93,7 @@ class CartItem(models.Model):
         return self.product.price * self.quantity
 
 class MenuCategory(models.Model):
+
         name = models.CharField(max_length=100, unique=True)
 
         class Meta:
