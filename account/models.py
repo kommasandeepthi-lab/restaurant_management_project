@@ -42,12 +42,13 @@ class Chef(models.Model):
         return self.name
 
 class Table(models.Model):
-    table_number = models.PositiveIntegerField(unique=True)
-    capacity = models.PositiveIntegerField()
-    is_available = models.BooleanField(Default=True)
+    table_number = models.IntegerField(unique=True, help_text="Unique number assigned to each table.")
+    capacity = models.IntegerField(help_text="Maximum number of guests the table can seat.")
+    is_available = models.BooleanField(default=True, help_text="Indicate if the table is currently available.")
+    loction = models.CharField(max_length=100, help_text="description of where the table is located (e.g., Window Side, Patio".)
 
     def __str__(self):
-        return f"Table {self.table_number} (Capacity: {self.capacity})"
+        return f"Table {self.table_number} ({'Available' if self.is_available else 'Occupied'})"
 
 class RestaurantContact(models.Model)
     address = models.CharField(help_text="Full address of the restaurant")
