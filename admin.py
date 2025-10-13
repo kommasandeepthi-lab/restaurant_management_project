@@ -4,8 +4,6 @@ from .models import MenuCategory
 
 @admin.register(Table)
 class TableAdmin(admin.ModelAdmin):
-    list_display = ('id', 'table_number', 'capacity', 'is_available')
-    search_fields = ('table_number',)
-    list_filter = ('is_available',)
-
-admin.site.register(MenuCategory)
+    list_display = ('table_number', 'capacity', 'is_available', 'location')
+    search_fields = ('table_number', 'location')
+    list_filter = ('is_available', 'location')
