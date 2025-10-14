@@ -69,7 +69,8 @@ address = model.CharField(max_length=100)
         return self.address
 
 class Restaurant(models.Model):
-    name = models.CharField(max_length=100, help_text="Name of the restaurant.")
+    name = models.CharField(max_length=200)
+    capacity = models.IntegerField(null=True, blank=True)
     description = models.TextField(blank=True, help_text="Optional description of the restaurant.")
     address = models.CharField(blank=True, null=True)
 
