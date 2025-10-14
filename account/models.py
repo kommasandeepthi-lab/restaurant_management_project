@@ -158,6 +158,8 @@ class Order(models.Model):
     customer_name = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_add_now=True)
 
+    customer_notes = models.TextField(null=True, blank=True)
+
     status = models.CharField(
         max_length=20
         choices=[("Pending", "Pending"), ("Processing", "Processing"), ("Cancelled", "Cancelled"), ("Completed", "Completed")],
@@ -178,7 +180,7 @@ class Order(models.Model):
 
 
     def __str__(self):
-        return f"Order {self.unique_id} - {self.status}"
+        return f"Order {self.id}"
 
 CUISINE_CHOICES = (
     ('Italian', 'Italian'),
