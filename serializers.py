@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import Table
+from .models import Cuisine
 
-class TableSerializer(serializers.ModelSerializer):
+class CuisineSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Table
-        fields = '__all__'
+        model = Cuisine
+        fields = ['id', 'name']
