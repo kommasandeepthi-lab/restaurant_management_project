@@ -180,6 +180,26 @@ class Order(models.Model):
     def __str__(self):
         return f"Order {self.unique_id} - {self.status}"
 
+CUISINE_CHOICES = (
+    ('Italian', 'Italian'),
+    ('Mexican', 'Mexican'),
+    ('Asian', 'Asian'),
+    ('Vegetarian', 'Vegetarian'),
+)
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    preferred_cuisine = models.CharField(
+        max_length=20,
+        choices=CUISINE_CHOICES,
+        null=True,
+        blank=True
+    )
+
+    def __str__(self):
+        return f"{self.user.username}'s Profile"
+
 class Coupon(models.Model):
     code = models.CharField(max_length=50, unique=True)
     discount_percentage = models.DecimalField(max_digits=5, decimal_places=2)
