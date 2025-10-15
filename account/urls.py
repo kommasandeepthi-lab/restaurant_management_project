@@ -30,6 +30,7 @@ from home.views import AvailableMenuItemCountView
 from .views import OrderSummaryView
 from .views import ReviewListView
 from .views import CuisineLsitView
+from home.views import MenuItemReviewCreate
 
 urlpatterns = [
     path('', include('your_app_name.urls')),
@@ -83,6 +84,7 @@ urlpatterns = [
     path('orders/<int:order_id>/summary/', OrderSummaryView.as_view(), name='order-summary'),
     path('reviews/', ReviewListView.as_view(), name='review-list'),
     path('api/cuisines/', CuisineLsitView.as_view(), name='cuisine-list')
+    path('menu-items/<int:menu_item_id>/reviews/', MenuItemReviewCreateView.as_view(), name='menu-item-review-create'),
 ]
 
 if settings.DEBUG:
