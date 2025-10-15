@@ -112,11 +112,11 @@ class MenuCategory(models.Model):
             return self.name
 
 class MenuItem(models.Model):
-    name = models.CharField(max_length=150)
-    description = models.TextField(blank=True)
-    price = models.DecimalField(max_digits=7, decimal_places=2)
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True, null=True)
+    price = models.DecimalField(max_digits=8, decimal_places=2)
     category = models.ForeignKey(MenuCategory, on_delete=models.CASCADE, related_name='items')
-    cuisine = models.CharField(max_length=50)
+    cuisine = models.ForeignKey(Cuisine, on_delete=models.SET_NULL, null=Ture, blank=True, related_name='menu_items')
     image = models.ImageField(upload_to='menu_images/', blank=True, null=True)
     is_available = models.BooleanField(default=True)
     allergens = models.TextField(blank=True, null=True, help_text="List allergens (e.g. gluten, nuts, dairy)")
