@@ -116,7 +116,7 @@ class MenuItem(models.Model):
     description = models.TextField(blank=True, null=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     category = models.ForeignKey(MenuCategory, on_delete=models.CASCADE, related_name='items')
-    cuisine = models.ForeignKey(Cuisine, on_delete=models.SET_NULL, null=Ture, blank=True, related_name='menu_items')
+    cuisine = models.ForeignKey(Cuisine, on_delete=models.SET_NULL, null=True, blank=True, related_name='menu_items')
     image = models.ImageField(upload_to='menu_images/', blank=True, null=True)
     is_available = models.BooleanField(default=True)
     allergens = models.TextField(blank=True, null=True, help_text="List allergens (e.g. gluten, nuts, dairy)")
@@ -132,12 +132,28 @@ class MenuItem(models.Model):
     def __str__(self):
         return self.name
 
+    def is_daily_special(self):
+        today = date.tpday()
+        return DailySpecial.objects.filter(menu_item=self, date=today).exists()
+
     def get_items_by_cuisine(cls, cuisine_type):
         return cls.objects.filer(cuisine__iexact=cuisine_type)
 
     @classmethod
     def filter_by_cuisine(cls, cuisine_type):
         return cls.objects.filter(cuisine_type__iexact=cuisine_type)
+
+class DailySpecial(models.Model):
+    menu_item - models.ForeignKey(MenuItem, on_delete=models.CASCADE, related_name='daily_specials')
+    date = models.DateField()
+
+    class Meta:
+        unique_together = ('menu_item', 'date')
+        verbose_name = "Daily Special"
+        verbose_name_plural = "Daily Specials"
+
+        def __str__(self):
+            return f"{self.menu_item.name} - {self.date}"
 
 class OrderStatus(models.Model):
     name = models.CharField(max_length=100, unique=True)
