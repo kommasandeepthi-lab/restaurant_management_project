@@ -4,6 +4,7 @@ from django.db import models
 from home.models import MenuItem
 from .utils import generate_unique_order_id
 from django.utils import timezone
+from .models import Order
 # Create your models here.
 
 class UserProfile(models.Model):
@@ -214,13 +215,14 @@ class Coupon(models.Model):
 
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="items")
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order_items')
+    menu_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE, related_name='order_items')
     product_name = models.CharField(max_length=200)
-    quantity = models.PositiveIntegerField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    quantity = models.IntegerField(default=1)
+    price_at_time_of_order = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return f"{self.product_name} - {self.quantity}"
+        return f"{self.quantity} - {self.menu_item.name}"
 
 class MenuCategory(models.Model):
     name = models.CharField(max_length=100, unique=True)
