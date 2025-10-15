@@ -42,6 +42,12 @@ class Chef(models.Model):
     def __str__(self):
         return self.name
 
+class Cuisine(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
+
 class Table(models.Model):
     table_number = models.IntegerField(unique=True)
     capacity = models.IntegerField()
