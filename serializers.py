@@ -1,8 +1,7 @@
 from rest_framework import serializers
-from .models import UserReview
+from .models import Table
 
-class UserReviewSerializer(serializers.ModelSerializer):
+class TableSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UserReview
-        fields = ['id', 'menu_item', 'rating', 'comment', 'created_at']
-        read_only_fields = ['id', 'created_at']
+        model = Table
+        fields = '__all__'
