@@ -1,4 +1,6 @@
-from .models import Table
+def format_currency(amount):
+    return f"${amount: .2f}"
 
-def get_available_tables_by_capacity(num_guests):
-    return Table.objects.filter(is_available=True, capacity__gte=num_guests)
+if __name__ == "__main__":
+    print(format_currency(22.5))
+    print(format_currency(100))
