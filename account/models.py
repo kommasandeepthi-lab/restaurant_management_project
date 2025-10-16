@@ -55,7 +55,7 @@ class Table(models.Model):
     loction = models.CharField(max_length=100, help_text="description of where the table is located (e.g., Window Side, Patio".)
 
     def __str__(self):
-        return f"Table {self.table_number} (Capacity: {self.capacity})"
+        return f"Table {self.table_number} (Seats: {self.capacity})"
 
 class RestaurantContact(models.Model)
     address = models.CharField(help_text="Full address of the restaurant")
