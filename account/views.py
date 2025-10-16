@@ -7,6 +7,9 @@ from .forms import SubscriptionForm
 from django.core.mail import send_mail
 from django.conf import settings
 from .forms import ContactForm
+from rest_framework import generics
+from .models import Table
+from .serializers import TableSerializer
 # Create your views here.
 
 def homepage_view(request):
@@ -36,6 +39,10 @@ def about_view(request):
 def about_chef(request):
     chef = Chef.objects.first()
     return render(request, "about_chef.html", {"chef": chef})
+
+class TableList(generics.ListAPIView):
+    queryset = Table.objects.all()
+    serializer_class = TableSerializer
 
 def home(request):
     context = {
