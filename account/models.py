@@ -5,6 +5,7 @@ from home.models import MenuItem
 from .utils import generate_unique_order_id
 from django.utils import timezone
 from .models import Order
+from django.conf import settings
 # Create your models here.
 
 class UserProfile(models.Model):
@@ -54,6 +55,14 @@ class Ingredient(models.Model):
 
     def __str__(self):
         return self.name
+
+class CustomerProfile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    phone_number = models.CharField(max_length=15)
+    delivery_address = models.TextField()
+
+    def __str__(self):
+        return f"{self.user.username}'s Profile"
 
 class Discount(models.Model):
     code = models.CharField(max_length=50, unique=True)
