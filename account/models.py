@@ -48,6 +48,13 @@ class Cuisine(models.Model):
     def __str__(self):
         return self.name
 
+class Ingredient(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    unit_of_measure = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
 class Discount(models.Model):
     code = models.CharField(max_length=50, unique=True)
     percentage = models.DecimalField(max_digits=5, decimal_places=2)
