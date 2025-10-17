@@ -1,6 +1,17 @@
-def format_currency(amount):
-    return f"${amount: .2f}"
+from datetime import datetime
+from django.utils import timezone
+from home.models import DailyOperatingHours
 
-if __name__ == "__main__":
-    print(format_currency(22.5))
-    print(format_currency(100))
+def is_restaurant_open():
+    now = timezone.localtime()
+    current_day = now.strftime("%A")
+    current_time = now.time()
+
+    try:
+        today_hours = DailyOperatingHours.objects.get(day=current_day)
+    except DailyOperatingHours.DoesNotExist:
+        return False
+
+    if today_hours.opening_time <= current_time <= today_hours.closing_time:
+        return True
+    return False
